@@ -1,0 +1,34 @@
+.cardRec {
+  width: 21rem;
+  height: auto;
+  margin: 10px 5px 10px 5px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.17);
+}
+
+.imageCard {
+  padding: 0.5rem;
+}
+
+.titleCard {
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 1rem;
+}
+
+.progressBar {
+  padding: 1rem 0 0.5rem 0;
+}
+
+.amount {
+  font-size: 11px;
+  padding-bottom: 1rem;
+}
+
+.amountCard {
+  padding-top: 8px;
+}
+
+.btnDonasi {
+  width: 100%;
+  padding: 1rem 0 0 0;
+}

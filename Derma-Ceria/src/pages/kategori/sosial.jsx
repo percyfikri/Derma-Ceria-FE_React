@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import styles from "./kategori.module.css"; // Pastikan ini mengimpor file CSS
 
 import CardFilter from "../../components/CardFilter/CardFilter";
-import FilterComponent from "../../components/FilterComponent";
+import FilterComponent from "../../components/FilterComponent/FilterComponent";
 import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
 
 import CardImgsos1 from "../../assets/images/sos1.jpg";

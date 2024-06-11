@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import styles from "./campaign.module.css";
 
 import CardFilter from "../../components/CardFilter/CardFilter";
-import FilterComponent from "../../components/FilterComponent";
+import FilterComponent from "../../components/FilterComponent/FilterComponent";
 import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
 
 import CardImgzakat1 from "../../assets/images/zakat1.jpg";
@@ -15,7 +15,8 @@ import CardImgzakat4 from "../../assets/images/zakat4.jpg";
 import CardImgzakat5 from "../../assets/images/zakat5.jpg";
 import CardImgzakat6 from "../../assets/images/zakat6.jpg";
 
-const zakat = () => { // Nama fungsi diganti menjadi Zakat (Huruf awal kapital sesuai konvensi React)
+const zakat = () => {
+  // Nama fungsi diganti menjadi Zakat (Huruf awal kapital sesuai konvensi React)
   return (
     <div className={styles["body-campaign"]}>
       <div className={styles["landing-donasi-page"]}>

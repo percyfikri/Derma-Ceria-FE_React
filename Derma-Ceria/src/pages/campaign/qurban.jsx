@@ -5,17 +5,18 @@ import { Link } from "react-router-dom";
 import styles from "./campaign.module.css";
 
 import CardFilter from "../../components/CardFilter/CardFilter";
-import FilterComponent from "../../components/FilterComponent";
+import FilterComponent from "../../components/FilterComponent/FilterComponent";
 import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
 
 import CardImgqurban1 from "../../assets/images/qurban1.jpg";
 import CardImgqurban2 from "../../assets/images/qurban2.jpg";
-import CardImgqurban3 from "../../assets/images/qurban3.jpg"; 
+import CardImgqurban3 from "../../assets/images/qurban3.jpg";
 import CardImgqurban4 from "../../assets/images/qurban4.jpg";
 import CardImgqurban5 from "../../assets/images/qurban5.jpg";
 import CardImgqurban6 from "../../assets/images/qurban6.jpg";
 
-const qurban = () => { // Nama fungsi diganti menjadi Qurban (Huruf awal kapital sesuai konvensi React)
+const qurban = () => {
+  // Nama fungsi diganti menjadi Qurban (Huruf awal kapital sesuai konvensi React)
   return (
     <div className={styles["body-campaign"]}>
       <div className={styles["landing-donasi-page"]}>

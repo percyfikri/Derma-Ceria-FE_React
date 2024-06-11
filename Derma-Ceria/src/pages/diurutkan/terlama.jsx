@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import styles from "./diurutkan.module.css";
 
 import CardFilter from "../../components/CardFilter/CardFilter";
-import FilterComponent from "../../components/FilterComponent";
+import FilterComponent from "../../components/FilterComponent/FilterComponent";
 import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
 
 import CardImgterlama1 from "../../assets/images/terlama1.png";

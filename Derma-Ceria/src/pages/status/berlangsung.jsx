@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import styles from "./status.module.css";
 
 import CardFilter from "../../components/CardFilter/CardFilter";
-import FilterComponent from "../../components/FilterComponent";
+import FilterComponent from "../../components/FilterComponent/FilterComponent";
 import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
 
 import CardImgberlangsung1 from "../../assets/images/berlangsung1.png";

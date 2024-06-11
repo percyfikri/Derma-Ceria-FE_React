@@ -1,77 +1,78 @@
 import React from "react";
 import { Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import styles from "../FilterComponent/FilterComponent.module.css";
 
 const FilterComponent = () => {
   return (
     <Col xs={2}>
       <div className="flex flex-col text-xl text-black max-w-[283px]">
         <ul style={{ listStyle: "square", paddingLeft: "0" }}>
-          <li className="first-list">
+          <li className={styles.firstList}>
             <b>Kategori</b>
           </li>
           <hr className="my-4" />
-          <li className="square-bullet2">
+          <li>
             <Link to="/bencana">Bencana</Link>
           </li>
-          <li className="square-bullet2">
+          <li>
             <Link to="/sosial">Sosial</Link>
           </li>
-          <li className="square-bullet3">
+          <li>
             <Link to="/pendidikan">Pendidikan</Link>
           </li>
-          <li className="square-bullet4">
+          <li>
             <Link to="/kesehatan">Kesehatan</Link>
           </li>
-          <li className="square-bullet5">
+          <li>
             <Link to="/teknologi">Teknologi</Link>
           </li>
         </ul>
         <ul style={{ listStyle: "square", paddingLeft: "0" }}>
-          <li className="first-list">
+          <li className={styles.firstList}>
             <b>Campaign</b>
           </li>
           <hr className="my-4" />
-          <li className="square-bullet7">
+          <li>
             <Link to="/zakat">Zakat</Link>
           </li>
-          <li className="square-bullet8">
+          <li>
             <Link to="/qurban">Qurban</Link>
           </li>
         </ul>
         <ul style={{ listStyle: "square", paddingLeft: "0" }}>
-          <li className="first-list">
+          <li className={styles.firstList}>
             <b>Status</b>
           </li>
           <hr className="my-4" />
-          <li className="square-bullet9">
+          <li>
             <Link to="/berlangsung">Berlangsung</Link>
           </li>
-          <li className="square-bullet10">
+          <li>
             <Link to="/selesai">Selesai</Link>
           </li>
-          <li className="square-bullet11">
+          <li>
             <Link to="/diperpanjang">Diperpanjang</Link>
           </li>
         </ul>
         <ul style={{ listStyle: "square", paddingLeft: "0" }}>
-          <li className="first-list">
+          <li className={styles.firstList}>
             <b>Diurutkan</b>
           </li>
           <hr className="my-4" />
-          <li className="square-bullet12">
+          <li>
             <Link to="/populer">Paling Populer</Link>
           </li>
-          <li className="square-bullet13">
+          <li>
             <Link to="/berakhir">Akan Berakhir</Link>
           </li>
-          <li className="square-bullet14">
+          <li>
             <Link to="/terbaru">Terbaru</Link>
           </li>
-          <li className="square-bullet15">
+          <li>
             <Link to="/terlama">Terlama</Link>
           </li>
-          <li className="square-bullet16">
+          <li>
             <Link to="/mendesak">Mendesak</Link>
           </li>
         </ul>

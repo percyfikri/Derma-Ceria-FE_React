@@ -19,7 +19,7 @@ const DonationCard = ({ imageSrc, title, target, progress, amount }) => {
           </div>
           <div className={styles.amount}>
             <Card.Text>
-              <strong>Rp. {amount}</strong> terkumpul dari Rp.{target}
+              <strong>Rp. {amount}</strong> terkumpul dari Rp. {target}
             </Card.Text>
           </div>
           <ProfileComponent/>

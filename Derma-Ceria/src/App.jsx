@@ -6,8 +6,12 @@ import Footer from "./components/Footer/FooterComponent";
 
 import Homepage from "./pages/homePage/homepage";
 import Donasi from "./pages/donasiPage/donasi";
-// import Event from "./pages/eventPage/event";
-// import Blog from "./pages/blogPage/blog";
+
+import Event from "./pages/eventPage/event";
+import Eventdetail from "./pages/eventPage/eventdetail"; 
+
+import Blog from "./pages/blogPage/blog";
+import Blogdetail from "./pages/blogPage/blogdetail";
 // import LoginWithoutHeaderAndFooter from "./components/LoginWithoutHeaderAndFooter";
 
 import Pendidikan from "./pages/kategori/pendidikan";
@@ -41,9 +45,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/donasi" element={<Donasi />} />
-        {/* <Route path="/event" element={<Event />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/login" element={<LoginWithoutHeaderAndFooter />} />*/}
+
+         <Route path="/event" element={<Event />} />
+         <Route path="/eventdetail" element={<Eventdetail />} />
+
+       <Route path="/blog" element={<Blog />} />
+       <Route path="/blogdetail" element={<Blogdetail />} />
+        {/* <Route path="/login" element={<LoginWithoutHeaderAndFooter />} />*/}
         
         <Route path="/pendidikan" element={<Pendidikan />} />
         <Route path="/bencana" element={<Bencana />} />

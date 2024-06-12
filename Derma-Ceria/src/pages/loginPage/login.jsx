@@ -1,5 +1,3 @@
-login.jsx
-// src/pages/loginPage/login.jsx
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -7,7 +5,6 @@ import { AiOutlineGoogle } from 'react-icons/ai';
 import Logo from "../../assets/logos/logoHorizontal.png";
 import "../../index.css";
 import "./login.css";
-import { auth, provider, signInWithPopup } from "../../googleAuth/firebase"; 
 
 const LoginWithoutHeaderAndFooter = () => {
   const [email, setEmail] = useState("");
@@ -29,25 +26,10 @@ const LoginWithoutHeaderAndFooter = () => {
     setPassword("");
   };
 
-  const handleGoogleLogin = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // Google Access Token. You can use it to access Google APIs.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        console.log("User Info:", user);
-      })
-      .catch((error) => {
-        console.error("Error during sign in with Google:", error);
-      });
-  };
-
   return (
     <Container fluid className="vh-100 d-flex align-items-center justify-content-center overlay-text">
       <Row className="w-100">
-        <Col md={6} className="d-none d-md-block p-0">
+        <Col md={6} className="d-none d-md-block p-0 position-relative">
           <div className="h-100 w-100">{/* mengosongkan bagian kiri */}</div>
           <div className="copyright-text">
             <h4>Derma Ceria</h4>
@@ -59,9 +41,7 @@ const LoginWithoutHeaderAndFooter = () => {
           <div className="login-form" style={{ maxWidth: "550px", width: "100%" }}>
             <div className="text-center mb-1">
               <div className="logo-container">
-                <Link to="/">
-                  <img src={Logo} alt="Logo" className="logo" onClick={(e) => {e.stopPropagation();}} />
-                </Link>
+                <img src={Logo} alt="Logo" className="logo" />
               </div>
             </div>
             <h3 className="mb-3">Selamat Datang!</h3>
@@ -80,18 +60,17 @@ const LoginWithoutHeaderAndFooter = () => {
                     <option value="2">Penggalang Dana</option>
                   </Form.Select>
               </Form.Group>
-              <Link to="/donasi" style={{ textDecoration: 'none' }}>
-                <Button variant="warning" type="button" className="w-100 mb-3">
-                  Masuk
-                </Button>
-              </Link>
+              <br />
+              <Button variant="warning" type="submit" className="w-100 mb-3">
+                <Link to="/donasi" style={{ color: 'black', textDecoration: 'none' }}>Masuk</Link>
+              </Button>
               <p className="text-center">Atau</p>
               <div className="text-center">
                 <p>
                   Belum punya akun? <Link to="/register">Buat Akun</Link>
                 </p>
               </div>
-              <Button variant="warning" type="button" className="w-100 mb-3" onClick={handleGoogleLogin}>
+              <Button variant="warning" type="button" className="w-100 mb-3">
                 <AiOutlineGoogle style={{ color: 'black', marginRight: '8px' }} />
                 Masuk dengan Google
               </Button>

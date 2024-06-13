@@ -29,25 +29,25 @@ const terbaru = () => {
             <Col>
               <Row className="gap-6 max-md:flex-col max-md:gap-0">
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgterbaru1} label="Terbaru" title="Bantu Anak Berkebutuhan Khusus Hidup Layak" dari="50.000.000" progress={10} terkumpul="5.000.000" LinkButton="/detailTerbaru" />
+                  <CardFilter imageSrc={CardImgterbaru1} label="Kesehatan" title="Bantu Anak Berkebutuhan Khusus Hidup Layak" dari="50.000.000" progress={10} terkumpul="5.000.000" LinkButton="/detailTerbaru" />
                 </Col>
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgterbaru2} label="Terbaru" title="Bantu Ribuan Warga yang Terdampak Banjir Lahar" dari="50.000.000" progress={30} terkumpul="15.546.876" LinkButton="/detailTerbaru" />
+                  <CardFilter imageSrc={CardImgterbaru2} label="Bencana" title="Bantu Ribuan Warga yang Terdampak Banjir Lahar" dari="50.000.000" progress={30} terkumpul="15.546.876" LinkButton="/detailTerbaru" />
                 </Col>
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgterbaru3} label="Terbaru" itle="Asap Tebal Kebakaran Hutan Kalbar!" dari="500.000.000" progress={0} terkumpul="249.546.876" LinkButton="/detailTerbaru" />
+                  <CardFilter imageSrc={CardImgterbaru3} label="Bencana" itle="Asap Tebal Kebakaran Hutan Kalbar!" dari="500.000.000" progress={0} terkumpul="249.546.876" LinkButton="/detailTerbaru" />
                 </Col>
               </Row>
 
               <Row className="gap-6 max-md:flex-col max-md:gap-0">
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgterbaru4} label="Terbaru" title="Anak dengan Penyakit Kronis Gagal Berobat" dari="116.650.000" progress={20} terkumpul="40.282.072" LinkButton="/detailTerbaru" />
+                  <CardFilter imageSrc={CardImgterbaru4} label="Kesehatan" title="Anak dengan Penyakit Kronis Gagal Berobat" dari="116.650.000" progress={20} terkumpul="40.282.072" LinkButton="/detailTerbaru" />
                 </Col>
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgterbaru5} label="Terbaru" title="Gantikan 10.000 Mushaf Milik Santri yang Usang" dari="50.000.000" progress={10} terkumpul="5.000.000" LinkButton="/detailTerbaru" />
+                  <CardFilter imageSrc={CardImgterbaru5} label="Sosial" title="Gantikan 10.000 Mushaf Milik Santri yang Usang" dari="50.000.000" progress={10} terkumpul="5.000.000" LinkButton="/detailTerbaru" />
                 </Col>
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgterbaru6} label="Terbaru" title="Bersama Berbagi Kebahagiaan di Hari Raya" dari="60.000.000" progress={0} terkumpul="5.000.000" LinkButton="/detailTerbaru" />
+                  <CardFilter imageSrc={CardImgterbaru6} label="Sosial" title="Bersama Berbagi Kebahagiaan di Hari Raya" dari="60.000.000" progress={0} terkumpul="5.000.000" LinkButton="/detailTerbaru" />
                 </Col>
               </Row>
             </Col>

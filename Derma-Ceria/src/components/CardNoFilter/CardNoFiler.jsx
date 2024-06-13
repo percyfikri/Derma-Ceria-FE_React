@@ -1,10 +1,10 @@
 import React from "react";
 import { Card, ProgressBar, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import styles from "../CardFilter/CardFilter.module.css";
+import styles from "../CardNoFilter/CardNoFilter.module.css";
 import ProfileComponent from "../ProfileComponent";
 
-const CardFilter = ({ imageSrc, label, title, dari, progress, terkumpul, LinkButton }) => {
+const CardNoFilter = ({ imageSrc, label, title, dari, progress, terkumpul, LinkButton }) => {
   return (
     <div>
       <Card className={styles.CardImg}>
@@ -39,4 +39,4 @@ const CardFilter = ({ imageSrc, label, title, dari, progress, terkumpul, LinkBut
   );
 };
 
-export default CardFilter;
+export default CardNoFilter;

@@ -23,10 +23,7 @@ const blogdetail = () => {
               Donasi adalah tindakan pemberian sukarela yang bertujuan untuk membantu individu, kelompok, atau lembaga yang membutuhkan. Tindakan ini merupakan wujud nyata kepedulian sosial dan empati terhadap sesama. Donasi memiliki tujuan
               yang bervariasi dan manfaatnya pun melibatkan banyak aspek. Tujuannya adalah membantu mereka yang membutuhkan, mendukung Penelitian dan pengembangan, Kemanusian Ditengah Bencana, Mendukung pengembangan Komunitas, Melindungi
               Lingkungan dan manfaatnya adalah Meringankan penderitaan, Mendorong perubahan sosial, Menginspirasi tindakan Lain, Menghubungkan manusia dan Membangun kepuasan batin.
-              <br /><br />
-              Manfaat: <br />Meringankan Penderitaan: Bantuan langsung seperti makanan, pakaian, dan tempat tinggal dapat segera meringankan penderitaan orang-orang yang terkena dampak. Memenuhi Kebutuhan Dasar: Donasi dapat membantu memenuhi
-              kebutuhan dasar seperti nutrisi yang layak, sanitasi, dan pendidikan dasar.
-            </p>
+             </p>
           </Col>
         </Row>
       </div>

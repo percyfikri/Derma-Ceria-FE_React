@@ -41,7 +41,7 @@ import DetailTeknologi from "./pages/detailDonasi/detailTeknologi";
 import DetailZakat from "./pages/detailDonasi/detailZakat";
 import DetailQurban from "./pages/detailDonasi/detailQurban";
 
-
+import PayDonasiUang from "./pages/paymentDonasi/payDonasiUang"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
@@ -87,6 +87,8 @@ function App() {
         <Route path="/detailteknologi" element={<DetailTeknologi />} />
         <Route path="/detailzakat" element={<DetailZakat />} />
         <Route path="/detailqurban" element={<DetailQurban />} />
+
+        <Route path="/paydonasiuang" element={<PayDonasiUang />} />
         
       </Routes>
       {!isLoginPage && <Footer />}

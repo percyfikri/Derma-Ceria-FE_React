@@ -30,25 +30,25 @@ const diperpanjang = () => {
             <Col>
               <Row className="gap-6 max-md:flex-col max-md:gap-0">
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgdiperpanjang1} label="Sosial" title="Kumpulkan Sumbangan Untuk Panti Asuhan" dari="25.000.000" progress={80} terkumpul="10.000.000" LinkButton="/detailDiperpanjang" />
+                  <CardFilter imageSrc={CardImgdiperpanjang1} label="Sosial" title="Kumpulkan Sumbangan Untuk Panti Asuhan" dari="25.000.000" progress={80} terkumpul="10.000.000" LinkButton="/detailSosial" />
                 </Col>
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgdiperpanjang2} label="Teknologi" title="Donasi Alat Elektronik Bekas Untuk Pelajar" dari="50.000.000" progress={20} terkumpul="10.000.000" LinkButton="/detailDiperpanjang" />
+                  <CardFilter imageSrc={CardImgdiperpanjang2} label="Teknologi" title="Donasi Alat Elektronik Bekas Untuk Pelajar" dari="50.000.000" progress={20} terkumpul="10.000.000" LinkButton="/detailTeknologi" />
                 </Col>
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgdiperpanjang3} label="Kesehatan" title="Mukjizat tuk Ratusan Pejuang Transplantasi Hati" dari="100.000.000" progress={40} terkumpul="25.000.000" LinkButton="/detailDiperpanjang" />
+                  <CardFilter imageSrc={CardImgdiperpanjang3} label="Kesehatan" title="Mukjizat tuk Ratusan Pejuang Transplantasi Hati" dari="100.000.000" progress={40} terkumpul="25.000.000" LinkButton="/detailKesehatan" />
                 </Col>
               </Row>
 
               <Row className="gap-6 max-md:flex-col max-md:gap-0">
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgdiperpanjang4} label="Pendidikan" title="Bantu Anak Daerah Untuk Mendapatkan Pendidikan" dari="90.000.000" progress={35} terkumpul="20.000.000" LinkButton="/detailDiperpanjang" />
+                  <CardFilter imageSrc={CardImgdiperpanjang4} label="Pendidikan" title="Bantu Anak Daerah Untuk Mendapatkan Pendidikan" dari="90.000.000" progress={35} terkumpul="20.000.000" LinkButton="/detailPendidikan" />
                 </Col>
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgdiperpanjang5} label="Zakat" title="Tunaikan Zakat Maal Anda Sekarang!" dari="20.000.000" progress={98} terkumpul="19.000.000" LinkButton="/detailDiperpanjang" />
+                  <CardFilter imageSrc={CardImgdiperpanjang5} label="Zakat" title="Tunaikan Zakat Maal Anda Sekarang!" dari="20.000.000" progress={98} terkumpul="19.000.000" LinkButton="/detailzakat" />
                 </Col>
                 <Col xs={12} sm={6} md={4} style={{ marginBottom: "1rem" }}>
-                  <CardFilter imageSrc={CardImgdiperpanjang6} label="Sosial" title="Bersama Berbagi Kebahagiaan di Hari Raya" dari="100.000.000" progress={50} terkumpul="50.000.000" LinkButton="/detailDiperpanjang" />
+                  <CardFilter imageSrc={CardImgdiperpanjang6} label="Sosial" title="Bersama Berbagi Kebahagiaan di Hari Raya" dari="100.000.000" progress={50} terkumpul="50.000.000" LinkButton="/detailSosial" />
                 </Col>
               </Row>
             </Col>

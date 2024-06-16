@@ -2,19 +2,18 @@
     font-family: Helvetica, sans-serif;
 }
 .customModal {
-    max-width: 400px; /* Set max-width for the modal */
+    max-width: 400px;
   }
   
   .paymentMethod {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    justify-content: space-between;  /* Ensures space between label and radio button */
+    justify-content: space-between;
   }
   
   .radioInput {
-    margin-left: auto;  /* Automatically pushes radio button to the right */
-    position: relative;
+    margin-left: auto;
   }
   
   .paymentLabel {
@@ -82,7 +81,7 @@
   }
   
   .custom-control-input:checked ~ .custom-control-label::before {
-    background-color: #f8b22d;  /* Color after click */
+    background-color: #f8b22d;
     border-color: #f8b22d;
   }
   
@@ -101,4 +100,35 @@
 .buttonPembayaran{
     width: 100%;
 }
-  
+
+
+
+/* style modal berhasil */
+.titlesuccess{
+  font-size: 20px;
+  font-weight: bold;
+  align-items: center; 
+  margin-top: 10px; 
+}
+.successModal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.videosuccessModal {
+  width: 100%; 
+}
+
+.pstyle {
+  font-size: 15px;
+  font-weight: bold;
+  color: #f8b22d;
+  text-align: center; 
+  margin-top: 10px; 
+}
+
+.buttonstyle {
+  width: 100%;
+  margin-top: -39px;
+}

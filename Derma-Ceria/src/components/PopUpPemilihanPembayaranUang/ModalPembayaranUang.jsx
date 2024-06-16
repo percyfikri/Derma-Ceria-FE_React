@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import styles from './PopUpPemilihanPembayaran.module.css';  // Import file CSS module
-import SuccessModal from './SuccessModal'; // Import the SuccessModal component
+import styles from './PopUpPemilihanPembayaran.module.css';
+import SuccessModal from './SuccessModal';
 
-const ModalPembayaranUang = ({ showModal, handleClose, donationAmount, serviceFee }) => {
+const ModalPembayaranUang = ({ showModal, handleClose, donationAmount, serviceFee, onSuccess }) => {
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
 
-  const paymentMethods = [
+  const buktiMethods = [
     { id: 1, name: 'GoPay', image: 'src/assets/logos/GoPay.png', title: 'E-Wallet' },
     { id: 2, name: 'Dana', image: '/src/assets/logos/Dana.png', title: 'E-Wallet' },
     { id: 3, name: 'BRIVA', image: '/src/assets/logos/BRIVA.png', title: 'Virtual Account' },
@@ -16,7 +17,7 @@ const ModalPembayaranUang = ({ showModal, handleClose, donationAmount, serviceFe
   ];
 
   // Group payment methods by title
-  const groupedPaymentMethods = paymentMethods.reduce((acc, method) => {
+  const groupedBuktiMethods = buktiMethods.reduce((acc, method) => {
     if (!acc[method.title]) {
       acc[method.title] = [];
     }
@@ -26,7 +27,12 @@ const ModalPembayaranUang = ({ showModal, handleClose, donationAmount, serviceFe
 
   const totalAmount = parseInt(donationAmount) + serviceFee;
 
+  const formatCurrency = (amount) => {
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  };
+
   const handleDonasiClick = () => {
+    onSuccess(selectedPaymentMethod);
     setShowSuccessModal(true);
     handleClose();
   };
@@ -41,10 +47,10 @@ const ModalPembayaranUang = ({ showModal, handleClose, donationAmount, serviceFe
         </Modal.Header>
         <Modal.Body>
           <Form>
-            {Object.keys(groupedPaymentMethods).map(title => (
+            {Object.keys(groupedBuktiMethods).map(title => (
               <div key={title}>
                 <h6 className={styles.paymentTitle}>{title}</h6>
-                {groupedPaymentMethods[title].map(method => (
+                {groupedBuktiMethods[title].map(method => (
                   <div key={method.id} className={styles.paymentMethod}>
                     <Form.Check.Label className={styles.paymentLabel}>
                       <img src={method.image} alt={method.name} className={styles.paymentImage} />
@@ -55,7 +61,8 @@ const ModalPembayaranUang = ({ showModal, handleClose, donationAmount, serviceFe
                       id={`payment-${method.id}`} 
                       name="paymentMethod" 
                       className={`${styles.radioInput} custom-control-input`} 
-                    />
+                      onChange={() => setSelectedPaymentMethod(method.name)}
+                      />
                   </div>
                 ))}
                 <hr />
@@ -66,18 +73,18 @@ const ModalPembayaranUang = ({ showModal, handleClose, donationAmount, serviceFe
         <h6 className={styles.paymentDetailsTitle}>Rincian Pembayaran</h6>
         <div className={`${styles.paymentAmountRight} ${styles.paymentDetailsFirst}`}>
           <p className={styles.paymentDetailsContent}>Nominal Donasi:</p>
-          <p className={styles.paymentDetailsContent}>Rp. {donationAmount}</p>
+          <p className={styles.paymentDetailsContent}>Rp. {formatCurrency(donationAmount)}</p>
         </div>
         <div className={`${styles.paymentAmountRight} ${styles.paymentDetailsFirst}`}>
           <p className={styles.paymentDetailsContent}>Biaya Layanan:</p>
-          <p className={styles.paymentDetailsContent}>Rp. {serviceFee}</p>
+          <p className={styles.paymentDetailsContent}>Rp. {formatCurrency(serviceFee)}</p>
         </div>
         <div className={`${styles.paymentAmountRight} ${styles.paymentDetailsFirst}`}>
           <p className={styles.paymentDetailsContent1}><b>Total:</b></p>
-          <p className={styles.paymentDetailsContent1}><b>Rp. {totalAmount}</b></p>
+          <p className={styles.paymentDetailsContent1}><b>Rp. {formatCurrency(totalAmount)}</b></p>
         </div>
         <Modal.Footer>
-          <Button className={styles.buttonPembayaran} variant="warning" onClick={handleDonasiClick}>Donasi</Button>
+          <Button className={styles.buttonPembayaran} variant="warning" onClick={handleDonasiClick} disabled={!selectedPaymentMethod}>Donasi</Button>
         </Modal.Footer>
       </Modal>
 

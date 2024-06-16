@@ -1,17 +1,28 @@
-// PayDonasiUang.js
-
 import React, { useState } from "react";
 import { MDBSwitch } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../../index.css";
 import styles from "./paymentDonasi.module.css";
-import ModalPembayaranUang from "../../components/PopUpPemilihanPembayaran/ModalPembayaranUang";
+import ModalPembayaranUang from "../../components/PopUpPemilihanPembayaranUang/ModalPembayaranUang";
+import BuktiPembayaran from "../../components/ModalBuktiPembayaran/BuktiPembayaran";
 
 const PayDonasiUang = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showBuktiModal, setShowBuktiModal] = useState(false);
   const [donationAmount, setDonationAmount] = useState("");
-  const serviceFee = 2000; // Fixed service fee of Rp. 2000
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+    isAnonymous: true,
+    paymentMethod: "",
+    referenceNumber: "123456", // Example reference number
+    date: new Date().toLocaleDateString(),
+    time: new Date().toLocaleTimeString()
+  });
+  const serviceFee = 2500; // Fixed service fee of Rp. 2000
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
@@ -23,6 +34,18 @@ const PayDonasiUang = () => {
   const handleCustomAmountChange = (event) => {
     setDonationAmount(event.target.value);
   };
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSuccess = (paymentMethod) => {
+    setFormData({ ...formData, paymentMethod });
+    setShowBuktiModal(true);
+  };
+
+  const handleBuktiModalClose = () => setShowBuktiModal(false);
 
   return (
     <div className={styles["body-payment-donasi"]}>
@@ -36,20 +59,51 @@ const PayDonasiUang = () => {
           </div>
           <div className={styles["form"]}>
             <div className={styles["buttonAnonym"]}>
-              <MDBSwitch className="mdb-switch" defaultChecked id="flexSwitchCheckChecked" label="Sembunyikan Nama Saya (Anonim)" />
+              <MDBSwitch
+                className="mdb-switch"
+                defaultChecked
+                id="flexSwitchCheckChecked"
+                label="Sembunyikan Nama Saya (Anonim)"
+                onChange={() => setFormData({ ...formData, isAnonymous: !formData.isAnonymous })}
+              />
             </div>
             <Form className={`${styles["form-donasiUang"]} mb-3`}>
               <Form.Group className={`${styles["form-group-donasiUang"]} my-4`} controlId="formBasicName">
-                <Form.Control type="text" placeholder="Nama Lengkap" />
+                <Form.Control
+                  type="text"
+                  placeholder="Nama Lengkap"
+                  name="name"
+                  onChange={handleInputChange}
+                  value={formData.name}
+                />
               </Form.Group>
               <Form.Group className={`${styles["form-group-donasiUang"]} my-4`} controlId="formBasicPhone">
-                <Form.Control type="phone" placeholder="No. Telepon" />
+                <Form.Control
+                  type="phone"
+                  placeholder="No. Telepon"
+                  name="phone"
+                  onChange={handleInputChange}
+                  value={formData.phone}
+                />
               </Form.Group>
               <Form.Group className={`${styles["form-group-donasiUang"]} my-4`} controlId="formBasicEmail">
-                <Form.Control type="email" placeholder="Email (Opsional)" />
+                <Form.Control
+                  type="email"
+                  placeholder="Email (Opsional)"
+                  name="email"
+                  onChange={handleInputChange}
+                  value={formData.email}
+                />
               </Form.Group>
               <Form.Group className={`${styles["form-group-donasiUang"]} my-4`} controlId="formBasicMessage">
-                <Form.Control as="textarea" placeholder="Pesan (Opsional)" style={{ height: "5rem" }} />
+                <Form.Control
+                  as="textarea"
+                  placeholder="Pesan (Opsional)"
+                  style={{ height: "5rem" }}
+                  name="message"
+                  onChange={handleInputChange}
+                  value={formData.message}
+                />
               </Form.Group>
             </Form>
           </div>
@@ -89,7 +143,21 @@ const PayDonasiUang = () => {
       </div>
 
       {/* pop up pembayaran */}
-      <ModalPembayaranUang showModal={showModal} handleClose={handleClose} donationAmount={donationAmount} serviceFee={serviceFee} />
+      <ModalPembayaranUang
+        showModal={showModal}
+        handleClose={handleClose}
+        donationAmount={donationAmount}
+        serviceFee={serviceFee}
+        onSuccess={handleSuccess}
+      />
+
+      <BuktiPembayaran
+        showBuktiModal={showBuktiModal}
+        handleBuktiModalClose={handleBuktiModalClose}
+        formData={formData}
+        donationAmount={donationAmount}
+        serviceFee={serviceFee}
+      />
     </div>
   );
 };

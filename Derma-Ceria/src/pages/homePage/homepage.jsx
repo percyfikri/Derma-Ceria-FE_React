@@ -18,44 +18,17 @@ import Cardrec4 from "../../assets/images/homepage4.jpeg";
 import Cardrec5 from "../../assets/images/homepage5.jpeg";
 import Cardrec6 from "../../assets/images/homepage6.jpeg";
 
+import Banner from "../../components/Banner/Banner.jsx";
 import DonationCard from "../../components/CardRecomendation/DonationCard";
 
 import styles from "./homepage.module.css";
 import "../../index.css";
-import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
 
 const homepage = () => {
   return (
     <div className="body">
       {/* Banner */}
-
-      <div className={styles.banner1}>
-        <Row>
-          <Col>
-            <div className="banner-left">
-              <h1>
-                Pintu Menuju <br />
-                Kebahagiaan
-              </h1>
-              <p>
-                Donasi adalah kilatan cahaya di tengah kegelapan, sebuah pelukan hangat dalam dinginnya dunia. Dengan memberi, kita menghidupkan percikan harapan, memperkuat jalinan kemanusiaan, dan membawa keajaiban bagi mereka yang
-                membutuhkan.
-              </p>
-              <div className="d-flex justify-content-start" style={{ marginLeft: "8rem" }}>
-                <a href="#" className="btn btn-warning" style={{ fontSize: "0.9rem" }}>
-                  Lihat Selengkapnya
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col>
-            <div className="banner-right"></div>
-          </Col>
-        </Row>
-      </div>
-
-      {/* <LandingPageComponent /> */}
-
+      <Banner />
       {/* Banner */}
 
       {/* Pilih Kategori Donasi */}

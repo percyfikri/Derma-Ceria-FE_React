@@ -7,7 +7,7 @@ import Landing2 from "../../assets/images/bannerlanding1.png";
 import Landing3 from "../../assets/images/banner1.png";
 
 const Banner = () => {
-  const images = [Landing2, Landing1]; // Add dynamic image URLs here
+  const images = [Landing1, Landing2, Landing3]; // Add dynamic image URLs here
 
   return (
     <div>
@@ -16,6 +16,29 @@ const Banner = () => {
           <Carousel.Item key={index}>
             <div className={styles.banner1} style={{ backgroundImage: `url(${image})` }}>
               {image === Landing1 && (
+                <Row>
+                  <Col>
+                    <div className="banner-left">
+                    <h1>Peduli Sesama, Wujudkan Kebaikan Nyata</h1>
+                    <p>Ulurkan tangan Anda untuk membantu mereka yang membutuhkan. Donasi Anda, sekecil apapun, akan memberikan makna dan harapan bagi kehidupan mereka.</p>
+                    </div>
+                  </Col>
+                  <Col>
+                    <div className="banner-right"></div>
+                  </Col>
+                </Row>
+              )}
+              {image === Landing2 && (
+                <Row>
+                  <Col>
+                    <div className="banner-left" style={{ textAlign: "center", marginTop: "10rem" }}>
+                      <h1 style={{ textAlign: "center" }}>Ayo Mulai Berdonasi!</h1>
+                      <p style={{ textAlign: "center" }}>Berikan senyuman bahagia untuk mereka yang membutuhkan!</p>
+                    </div>
+                  </Col>
+                </Row>
+              )}
+              {image === Landing3 && (
                 <Row>
                   <Col>
                     <div className="banner-left">
@@ -34,16 +57,6 @@ const Banner = () => {
                   </Col>
                 </Row>
               )}
-              {image === Landing2 && (
-                <Row>
-                  <Col>
-                    <div className="banner-left" style={{ textAlign: "center", marginTop: "10rem"}}>
-                      <h1 style={{ textAlign: "center" }}>Ayo Mulai Berdonasi!</h1>
-                      <p style={{ textAlign: "center" }}>Berikan senyuman bahagia untuk mereka yang membutuhkan!</p>
-                    </div>
-                  </Col>
-                </Row>
-              )}
             </div>
           </Carousel.Item>
         ))}
@@ -53,5 +66,3 @@ const Banner = () => {
 };
 
 export default Banner;
-
-

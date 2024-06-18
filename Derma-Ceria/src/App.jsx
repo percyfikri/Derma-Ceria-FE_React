@@ -3,7 +3,10 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar/NavbarComponent";
 import Footer from "./components/Footer/FooterComponent";
+import Sidebar from "./components/sidebar";
+import LoginWithoutFooter from "./components/LoginWithoutFooter";
 
+import Register from "./pages/registerPage/register";  
 import Homepage from "./pages/homePage/homepage";
 import Donasi from "./pages/donasiPage/donasi";
 
@@ -12,7 +15,6 @@ import EventDetail from "./pages/eventPage/eventdetail";
 
 import Blog from "./pages/blogPage/blog";
 import BlogDetail from "./pages/blogPage/blogdetail";
-// import LoginWithoutHeaderAndFooter from "./components/LoginWithoutHeaderAndFooter";
 
 import Pendidikan from "./pages/kategori/pendidikan";
 import Bencana from "./pages/kategori/bencana";
@@ -46,54 +48,66 @@ import PayDonasiBarang from "./pages/paymentDonasi/payDonasiBarang"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
-  // const isRegisterPage = location.pathname === "/register";
+  const isRegisterPage = location.pathname === "/register";
+  const sidebarRoutes = [
+    "/dashboardDonatur",
+    "/riwayatDonasi",
+    "/transparansiDonatur",
+    "/pelacakanDonatur",
+  ];
+
+  const isSidebar = sidebarRoutes.includes(location.pathname);
 
   return (
     <>
-      {!isLoginPage && <Navbar />}
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/donasi" element={<Donasi />} />
+      {!isLoginPage && !isRegisterPage && <Navbar /> }
+      {!isLoginPage && !isRegisterPage && !isSidebar && <Navbar />}
+        {isSidebar && <Sidebar />}
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/donasi" element={<Donasi />} />
 
-        <Route path="/event" element={<Event />} />
-        <Route path="/eventdetail" element={<EventDetail />} />
+          <Route path="/event" element={<Event />} />
+          <Route path="/eventdetail" element={<EventDetail />} />
 
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blogdetail" element={<BlogDetail />} />
-        {/* <Route path="/login" element={<LoginWithoutHeaderAndFooter />} />*/}
-        
-        <Route path="/pendidikan" element={<Pendidikan />} />
-        <Route path="/bencana" element={<Bencana />} />
-        <Route path="/kesehatan" element={<Kesehatan />} />
-        <Route path="/sosial" element={<Sosial />} />
-        <Route path="/teknologi" element={<Teknologi />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blogdetail" element={<BlogDetail />} />
 
-        <Route path="/zakat" element={<Zakat />} />
-        <Route path="/qurban" element={<Qurban />} />
+          <Route path="/login" element={<LoginWithoutFooter />} />
+          <Route path="/register" element={<Register />} /> 
 
-        <Route path="/berlangsung" element={<Berlangsung />} />
-        <Route path="/diperpanjang" element={<Diperpanjang />} />
-        <Route path="/selesai" element={<Selesai />} />
+          <Route path="/pendidikan" element={<Pendidikan />} />
+          <Route path="/bencana" element={<Bencana />} />
+          <Route path="/kesehatan" element={<Kesehatan />} />
+          <Route path="/sosial" element={<Sosial />} />
+          <Route path="/teknologi" element={<Teknologi />} />
 
-        <Route path="/berakhir" element={<Berakhir />} />
-        <Route path="/populer" element={<Populer />} />
-        <Route path="/terbaru" element={<Terbaru />} />
-        <Route path="/terlama" element={<Terlama />} />
-        <Route path="/mendesak" element={<Mendesak />} />
+          <Route path="/zakat" element={<Zakat />} />
+          <Route path="/qurban" element={<Qurban />} />
 
-        <Route path="/detailpendidikan" element={<DetailPendidikan />} />
-        <Route path="/detailbencana" element={<DetailBencana />} /> 
-        <Route path="/detailkesehatan" element={<DetailKesehatan />} />
-        <Route path="/detailsosial" element={<DetailSosial />} />
-        <Route path="/detailteknologi" element={<DetailTeknologi />} />
-        <Route path="/detailzakat" element={<DetailZakat />} />
-        <Route path="/detailqurban" element={<DetailQurban />} />
+          <Route path="/berlangsung" element={<Berlangsung />} />
+          <Route path="/diperpanjang" element={<Diperpanjang />} />
+          <Route path="/selesai" element={<Selesai />} />
+
+          <Route path="/berakhir" element={<Berakhir />} />
+          <Route path="/populer" element={<Populer />} />
+          <Route path="/terbaru" element={<Terbaru />} />
+          <Route path="/terlama" element={<Terlama />} />
+          <Route path="/mendesak" element={<Mendesak />} />
+
+          <Route path="/detailpendidikan" element={<DetailPendidikan />} />
+          <Route path="/detailbencana" element={<DetailBencana />} />
+          <Route path="/detailkesehatan" element={<DetailKesehatan />} />
+          <Route path="/detailsosial" element={<DetailSosial />} />
+          <Route path="/detailteknologi" element={<DetailTeknologi />} />
+          <Route path="/detailzakat" element={<DetailZakat />} />
+          <Route path="/detailqurban" element={<DetailQurban />} />
 
         <Route path="/paydonasiuang" element={<PayDonasiUang />} />
         <Route path="/paydonasibarang" element={<PayDonasiBarang />} />
         
       </Routes>
-      {!isLoginPage && <Footer />}
+      {!isLoginPage && !isRegisterPage && <Footer />}
     </>
   );
 }

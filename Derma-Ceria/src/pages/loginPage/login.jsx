@@ -6,20 +6,31 @@ import Logo from "../../assets/logos/logoHorizontal.png";
 import "../../index.css";
 import "./login.css";
 import { auth, provider } from './firebase';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
 
 const LoginWithoutFooter = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigate("/dashboard");
-      }
-    });
-    return unsubscribe;
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result.credential) {
+          const credential = GoogleAuthProvider.credentialFromResult(result);
+          const token = credential.accessToken;
+          const user = result.user;
+          console.log("User Info:", user);
+          navigate('/dashboard'); 
+        }
+      })
+      .catch((error) => {
+        console.error("Error during redirect authentication:", error);
+      });
+
   }, [navigate]);
 
   const handleEmailChange = (e) => {
@@ -39,18 +50,12 @@ const LoginWithoutFooter = () => {
   };
 
   const handleGoogleLogin = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
-        console.log("User Info:", user);
-        navigate("/dashboard");
-      })
+    signInWithRedirect(auth, provider)
       .catch((error) => {
         console.error("Error during sign in with Google:", error);
       });
   };
+  
 
   return (
     <Container fluid className="vh-100 d-flex align-items-center justify-content-center overlay-text">

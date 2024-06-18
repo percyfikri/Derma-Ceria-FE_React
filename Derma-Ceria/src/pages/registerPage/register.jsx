@@ -5,8 +5,8 @@ import { AiOutlineGoogle } from "react-icons/ai";
 import Logo from "../../assets/logos/logoHorizontal.png";
 import "../../index.css";
 import "./register.css";
-import { auth, provider } from '../../pages/loginPage/firebase';
-import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { auth, provider } from '../../pages/loginPage/firebase'; // Pastikan firebase sudah di import
+import { getAuth, signInWithRedirect, getRedirectResult, createUserWithEmailAndPassword, GoogleAuthProvider } from 'firebase/auth'; // Tambahkan import createUserWithEmailAndPassword
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -22,10 +22,8 @@ const Register = () => {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         console.log("User Info:", user);
-        // You can save the user info to database here if needed
         navigate("/dashboard");
       })
       .catch((error) => {
@@ -33,17 +31,10 @@ const Register = () => {
       });
   };
 
-  const handleGoogleLogin = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
-        console.log("User Info:", user);
-        navigate("/dashboard");
-      })
+  const handleGoogleRegister = () => {
+    signInWithRedirect(auth, provider)
       .catch((error) => {
-        console.error("Error during sign in with Google:", error);
+        console.error("Error during sign up with Google:", error);
       });
   };
 
@@ -97,9 +88,9 @@ const Register = () => {
                 Daftar
               </Button>
               <p className="text-center">Atau</p>
-              <Button variant="warning" type="button" className="w-100 mb-3" onClick={handleGoogleLogin}>
+              <Button variant="warning" type="button" className="w-100 mb-3" onClick={handleGoogleRegister}>
                 <AiOutlineGoogle style={{ color: "black", marginRight: "8px" }} />
-                Masuk dengan Google
+                Daftar dengan Google
               </Button>
             </Form>
             <div className="text-center">

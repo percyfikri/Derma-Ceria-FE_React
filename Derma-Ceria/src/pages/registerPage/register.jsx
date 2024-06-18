@@ -1,22 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineGoogle } from "react-icons/ai";
 import Logo from "../../assets/logos/logoHorizontal.png";
 import "../../index.css";
 import "./register.css";
-import { auth, provider } from '../../pages/loginPage/firebase'; // Pastikan firebase sudah di import
-import { getAuth, signInWithRedirect, getRedirectResult, createUserWithEmailAndPassword, GoogleAuthProvider } from 'firebase/auth'; // Tambahkan import createUserWithEmailAndPassword
+import { auth, provider } from '../../pages/loginPage/firebase';
+import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false); 
   const navigate = useNavigate();
+  
+  // const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user && loggedIn) { 
+        navigate("/donasi");
+      }
+    });
+    return unsubscribe;
+  }, [loggedIn, navigate]);
 
   const handleNameChange = (e) => setName(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleRoleChange = (e) => setRole(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,7 +40,7 @@ const Register = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("User Info:", user);
-        navigate("/dashboard");
+        setLoggedIn(true); 
       })
       .catch((error) => {
         console.error("Error during sign up with email and password:", error);
@@ -32,11 +48,19 @@ const Register = () => {
   };
 
   const handleGoogleRegister = () => {
-    signInWithRedirect(auth, provider)
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log("User Info:", user);
+        setLoggedIn(true); 
+      })
       .catch((error) => {
-        console.error("Error during sign up with Google:", error);
+        console.error("Error during sign in with Google:", error);
       });
   };
+  
 
   return (
     <Container fluid className="vh-100 d-flex align-items-center justify-content-center overlay-text">
@@ -78,7 +102,7 @@ const Register = () => {
                 <Form.Control type="password" placeholder="Masukkan Kata Sandi" value={password} onChange={handlePasswordChange} className="form-control-custom" />
               </Form.Group>
               <Form.Group controlId="formRole" className="mb-3">
-                <Form.Select className="form-control-custom">
+                <Form.Select value={role} onChange={handleRoleChange} className="form-control-custom">
                   <option>Pilih Role</option>
                   <option value="1">Donatur</option>
                   <option value="2">Penggalang Dana</option>

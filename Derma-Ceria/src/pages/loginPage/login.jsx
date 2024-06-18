@@ -6,32 +6,22 @@ import Logo from "../../assets/logos/logoHorizontal.png";
 import "../../index.css";
 import "./login.css";
 import { auth, provider } from './firebase';
-import { getAuth, signInWithRedirect, getRedirectResult, GoogleAuthProvider } from 'firebase/auth';
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 const LoginWithoutFooter = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
-  const auth = getAuth();
-  const provider = new GoogleAuthProvider();
+  const [loggedIn, setLoggedIn] = useState(false); // Track if user is logged in
 
   useEffect(() => {
-    getRedirectResult(auth)
-      .then((result) => {
-        if (result.credential) {
-          const credential = GoogleAuthProvider.credentialFromResult(result);
-          const token = credential.accessToken;
-          const user = result.user;
-          console.log("User Info:", user);
-          navigate('/dashboard'); 
-        }
-      })
-      .catch((error) => {
-        console.error("Error during redirect authentication:", error);
-      });
-
-  }, [navigate]);
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user && loggedIn) { // Only redirect if logged in and flag is set
+        navigate("/donasi");
+      }
+    });
+    return unsubscribe;
+  }, [loggedIn, navigate]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -50,12 +40,18 @@ const LoginWithoutFooter = () => {
   };
 
   const handleGoogleLogin = () => {
-    signInWithRedirect(auth, provider)
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log("User Info:", user);
+        setLoggedIn(true); // Set logged in flag to true after successful login
+      })
       .catch((error) => {
         console.error("Error during sign in with Google:", error);
       });
   };
-  
 
   return (
     <Container fluid className="vh-100 d-flex align-items-center justify-content-center overlay-text">
@@ -86,10 +82,10 @@ const LoginWithoutFooter = () => {
               </Form.Group>
               <Form.Group controlId="formRole">
                 <Form.Select className="form-control-custom">
-                    <option>Pilih Role</option>
-                    <option value="1">Donatur</option>
-                    <option value="2">Penggalang Dana</option>
-                  </Form.Select>
+                  <option>Pilih Role</option>
+                  <option value="1">Donatur</option>
+                  <option value="2">Penggalang Dana</option>
+                </Form.Select>
               </Form.Group>
               <br />
               <Button variant="warning" type="submit" className="w-100 mb-3">

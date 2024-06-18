@@ -3,7 +3,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar/NavbarComponent";
 import Footer from "./components/Footer/FooterComponent";
-import Sidebar from "./components/sidebar";
+import Sidebar from "./components/Sidebar/sidebar";
 import LoginWithoutFooter from "./components/LoginWithoutFooter";
 
 import Register from "./pages/registerPage/register";  
@@ -56,13 +56,12 @@ function App() {
     "/pelacakanDonatur",
   ];
 
-  const isSidebar = sidebarRoutes.includes(location.pathname);
+  const isSidebar = sidebarRoutes.some(route => location.pathname.startsWith(route));
 
   return (
     <>
-      {!isLoginPage && !isRegisterPage && <Navbar /> }
       {!isLoginPage && !isRegisterPage && !isSidebar && <Navbar />}
-        {isSidebar && <Sidebar />}
+      {isSidebar ? <Sidebar /> : (
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/donasi" element={<Donasi />} />
@@ -107,7 +106,8 @@ function App() {
         <Route path="/paydonasibarang" element={<PayDonasiBarang />} />
         
       </Routes>
-      {!isLoginPage && !isRegisterPage && <Footer />}
+      )}
+      {!isLoginPage && !isRegisterPage && !isSidebar && <Footer />}
     </>
   );
 }

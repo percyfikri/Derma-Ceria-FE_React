@@ -1,45 +1,77 @@
 import React from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
-import { FacebookShareButton, TwitterShareButton, WhatsappShareButton, EmailShareButton } from "react-share";
-import { FaFacebook, FaTwitter, FaWhatsapp, FaEnvelope } from "react-icons/fa";
-import styles from "./ShareSocialMedia.module.css"; // Buat file CSS untuk styling khusus
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  LinkedinShareButton,
+} from "react-share"; // Remove InstagramShareButton import
 
-const ShareModal = ({ showShareModal, handleCloseShareModal, shareUrl, shareText }) => {
+import styles from "./ShareSocialMedia.module.css";
+
+import FacebookIcon from "../../assets/logos/Facebook.png";
+import TwitterIcon from "../../assets/logos/X.png"; 
+import WhatsappIcon from "../../assets/logos/WhatsApp.png";
+import LinkedinIcon from "../../assets/logos/Linkedin.png";
+import InstagramIcon from "../../assets/logos/Instagram.png";
+import CopyLinkIcon from "../../assets/logos/copylink.png";
+
+const ShareSocialMedia = ({ showShareModal, handleCloseShareModal, shareUrl, shareText }) => {
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      alert("Link telah disalin ke clipboard!");
+    });
+  };
+
+  const handleInstagramShare = () => {
+    alert("Bagikan di Instagram tidak tersedia, silakan copy link dan bagikan secara manual.");
+  };
+
   return (
     <Modal show={showShareModal} onHide={handleCloseShareModal} dialogClassName={styles.customModal}>
       <Modal.Header closeButton>
-        <Modal.Title>Bagikan Bukti Pembayaran</Modal.Title>
+        <Modal.Title>Bagikan Donasi Ke</Modal.Title>
       </Modal.Header>
       <Modal.Body className={styles.shareModalBody}>
-        <p>Bagikan bukti pembayaran Anda di media sosial:</p>
         <div className={styles.shareButtonsContainer}>
           <FacebookShareButton url={shareUrl} quote={shareText}>
-            <Button className={styles.shareButton} variant="primary">
-              <FaFacebook /> Facebook
+            <Button className={`${styles.shareButton} ${styles.iconButton}`} variant="light">
+              <img src={FacebookIcon} alt="Facebook" className={styles.icon} />
             </Button>
           </FacebookShareButton>
+          {/* Instagram share button */}
+          <Button
+            className={`${styles.shareButton} ${styles.iconButton}`}
+            variant="light"
+            onClick={handleInstagramShare}
+          >
+            <img src={InstagramIcon} alt="Instagram" className={styles.icon} />
+          </Button>
+          {/* End of Instagram button */}
           <TwitterShareButton url={shareUrl} title={shareText}>
-            <Button className={styles.shareButton} variant="info">
-              <FaTwitter /> Twitter
+            <Button className={`${styles.shareButton} ${styles.iconButton}`} variant="light">
+              <img src={TwitterIcon} alt="Twitter" className={styles.icon} />
             </Button>
           </TwitterShareButton>
+          <LinkedinShareButton url={shareUrl} title={shareText}>
+            <Button className={`${styles.shareButton} ${styles.iconButton}`} variant="light">
+              <img src={LinkedinIcon} alt="LinkedIn" className={styles.icon} />
+            </Button>
+          </LinkedinShareButton>
           <WhatsappShareButton url={shareUrl} title={shareText}>
-            <Button className={styles.shareButton} variant="success">
-              <FaWhatsapp /> WhatsApp
+            <Button className={`${styles.shareButton} ${styles.iconButton}`} variant="light">
+              <img src={WhatsappIcon} alt="WhatsApp" className={styles.icon} />
             </Button>
           </WhatsappShareButton>
-          <EmailShareButton url={shareUrl} subject="Bukti Pembayaran" body={shareText}>
-            <Button className={styles.shareButton} variant="secondary">
-              <FaEnvelope /> Email
-            </Button>
-          </EmailShareButton>
+          
+          <Button onClick={handleCopyLink} className={`${styles.shareButton} ${styles.iconButton}`} variant="light">
+            <img src={CopyLinkIcon} alt="Copy Link" className={styles.icon} />
+          </Button>
         </div>
       </Modal.Body>
-      <Modal.Footer>
-      </Modal.Footer>
     </Modal>
   );
 };
 
-export default ShareModal;
+export default ShareSocialMedia;

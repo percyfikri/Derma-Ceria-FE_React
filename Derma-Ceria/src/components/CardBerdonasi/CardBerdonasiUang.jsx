@@ -1,19 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, ProgressBar, Nav } from "react-bootstrap";
 
 import Boxcoin from "../../assets/icons/boxCoin.png";
 import Shareicon from "../../assets/icons/share.svg";
 import styles from "./CardBerdonasi.module.css";
-import ProfileComponent from "../ProfileComponent";
+import ProfileComponent from "../../components/ProfileComponent";
+import ShareSocialMedia from "../../components/ShareSocialMedia/ShareSocialMedia"; // Import komponen ShareSocialMedia
 
-const CardBerdonasiUang = ({ title, danaterkumpul, progress, target, donasi, dibagikan, hari, buttonDonasi, buttonShare, rincianpenggunaandana, imageProfile, titleProfile, jumlahUang, namaPenerima, waktu, semuadonasi, imageProfile2, titleProfile2, jumlahUang2, namaPenerima2, waktu2, semuadonasi2, imageProfile3, titleProfile3, jumlahUang3, namaPenerima3, waktu3, semuadonasi3}) => {
+const CardBerdonasiUang = ({ 
+  title, 
+  danaterkumpul, 
+  progress, 
+  target, 
+  donasi, 
+  dibagikan, 
+  hari, 
+  buttonDonasi, 
+  buttonShare, 
+  rincianpenggunaandana, 
+  imageProfile, 
+  titleProfile, 
+  jumlahUang, 
+  namaPenerima, 
+  waktu, 
+  semuadonasi, 
+  imageProfile2, 
+  titleProfile2, 
+  jumlahUang2, 
+  namaPenerima2, 
+  waktu2, 
+  semuadonasi2, 
+  imageProfile3, 
+  titleProfile3, 
+  jumlahUang3, 
+  namaPenerima3, 
+  waktu3, 
+  semuadonasi3 
+}) => {
+  const [showShareModal, setShowShareModal] = useState(false); // State untuk modal
+
+  const handleShareClick = () => {
+    setShowShareModal(true); // Tampilkan modal ketika tombol dibagikan diklik
+  };
+
+  const handleCloseShareModal = () => {
+    setShowShareModal(false); // Tutup modal
+  };
+
   return (
     <div className={styles.bodyCardBerdonasi}>
       <Card className={styles.CardBerdonasi}>
         <Card.Header>
           <div className={styles.titleCard}>
-            <Card.Text>{title}Dana Terkumpul</Card.Text>
+            <Card.Text>{title} Dana Terkumpul</Card.Text>
           </div>
         </Card.Header>
         <Card.Body>
@@ -51,10 +91,10 @@ const CardBerdonasiUang = ({ title, danaterkumpul, progress, target, donasi, dib
             </Link>
           </div>
           <div className={styles.ButtonShare}>
-            <Link to={buttonShare} className={`btn btn-outline-secondary ${styles.btnbuttonShare}`}>
+            <button onClick={handleShareClick} className={`btn btn-outline-secondary ${styles.btnbuttonShare}`}>
               Dibagikan
               <img src={Shareicon} alt="icon share" className={`me-2 img-fluid ${styles.iconShare}`} />
-            </Link>
+            </button>
           </div>
           <div className={styles.customRow}>
             <Card className={styles.cardStyle}>
@@ -66,7 +106,7 @@ const CardBerdonasiUang = ({ title, danaterkumpul, progress, target, donasi, dib
             </Card>
           </div>
           <div className={styles.titleProfile}>
-            <Card.Text>{titleProfile}Rincian Donasi</Card.Text>
+            <Card.Text>{titleProfile} Rincian Donasi</Card.Text>
           </div>
 
           <div className={styles.donationCardProfile}>
@@ -107,15 +147,19 @@ const CardBerdonasiUang = ({ title, danaterkumpul, progress, target, donasi, dib
             </div>
           </div>
           <div>
-          <hr className={styles.hrStyle} />
-          <Nav.Link to={semuadonasi} className={styles.linkStyle}>
-                Lihat semua Donasi
-              </Nav.Link>
-
+            <hr className={styles.hrStyle} />
+            <Nav.Link to={semuadonasi} className={styles.linkStyle}>
+              Lihat semua Donasi
+            </Nav.Link>
           </div>
-
         </Card.Body>
       </Card>
+      <ShareSocialMedia 
+        showShareModal={showShareModal} 
+        handleCloseShareModal={handleCloseShareModal} 
+        shareUrl={window.location.href} 
+        shareText={`Lihat bukti pembayaran saya di ${window.location.href}`} 
+      />
     </div>
   );
 };

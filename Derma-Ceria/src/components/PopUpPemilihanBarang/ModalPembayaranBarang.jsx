@@ -50,7 +50,7 @@ const ModalPembayaranBarang = ({ showModal, handleClose, donationAmount = 2500, 
     <div className={styles.bodyPembayaranUang}>
       <Modal show={showModal} onHide={handleClose} dialogClassName={styles.customModal}>
         <Modal.Header closeButton>
-          <Modal.Title>Pilih Metode Pembayaran</Modal.Title>
+          <Modal.Title><b>Pilih Metode Pembayaran</b></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -79,16 +79,18 @@ const ModalPembayaranBarang = ({ showModal, handleClose, donationAmount = 2500, 
         </Modal.Body>
         <div className={styles.paymentDetails}>
           <h6 className={styles.paymentDetailsTitle}>Rincian Pembayaran</h6>
-          <div className={styles.paymentAmount}>
-            {/* <p className={styles.paymentDetailsContent}>Deskripsi Barang: {description}</p>
-            <p className={styles.paymentDetailsContent}>Jumlah Barang: {quantity}</p> */}
-            <p className={styles.paymentDetailsContent}>Biaya Layanan : Rp. {formatCurrency(donationAmount)}</p>
-          </div>
-          <div className={styles.paymentAmount}>
-            <p className={styles.paymentDetailsContent}>Biaya Ongkir: Rp. {formatCurrency(serviceFee)}</p>
-          </div>
-          <div className={styles.paymentAmount}>
-            <p className={styles.paymentDetailsContent}><b>Total: Rp. {formatCurrency(totalAmount)}</b></p>
+          
+          <div className={`${styles.paymentAmountRight} ${styles.paymentDetailsFirst}`}>
+          <p className={styles.paymentDetailsContent}>Biaya Ongkir:</p>
+          <p className={styles.paymentDetailsContent}>Rp. {formatCurrency(serviceFee)}</p>
+        </div>
+          <div className={`${styles.paymentAmountRight} ${styles.paymentDetailsFirst}`}>
+          <p className={styles.paymentDetailsContent}>Biaya Layanan:</p>
+          <p className={styles.paymentDetailsContent}>Rp. {formatCurrency(donationAmount)}</p>
+        </div>
+        <div className={`${styles.paymentAmountRight} ${styles.paymentDetailsFirst}`}>
+        <p className={styles.paymentDetailsContent}>Total:</p>
+          <p className={styles.paymentDetailsContent}>Rp. {formatCurrency(totalAmount)}</p>
           </div>
         </div>
         <Modal.Footer>

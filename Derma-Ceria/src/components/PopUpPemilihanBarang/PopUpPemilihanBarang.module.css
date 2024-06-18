@@ -102,14 +102,12 @@
   margin-top: 15px;
 
 }
-
-/* Add your styles here */
-.bodyPembayaranUang {
-  /* Your custom styles */
-}
-.customModal {
-  /* Your custom modal styles */
-}
+.bodyPembayaranUang{
+    font-family: Helvetica, sans-serif;
+  }
+  .customModal {
+      max-width: 400px;
+    }
 .paymentTitle {
   /* Your payment title styles */
 }
@@ -191,7 +189,6 @@
   font-size: 15px;
   font-weight: bold;
 }
-
 .paymentDetailsContent {
   margin-right:   15px;
   font-size: 13px;
@@ -215,7 +212,6 @@
 }
 
 .paymentDetailsFirst {
-  margin-left: 15px; /* Adjust the value as needed */
 }
 /* Custom styling for radio input */
 .custom-control-input ~ .custom-control-label::before {

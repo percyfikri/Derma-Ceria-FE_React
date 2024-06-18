@@ -29,7 +29,7 @@ const LoginWithoutHeaderAndFooter = () => {
   return (
     <Container fluid className="vh-100 d-flex align-items-center justify-content-center overlay-text">
       <Row className="w-100">
-        <Col md={6} className="d-none d-md-block p-0 position-relative">
+        <Col md={6} className="d-none d-md-block p-0">
           <div className="h-100 w-100">{/* mengosongkan bagian kiri */}</div>
           <div className="copyright-text">
             <h4>Derma Ceria</h4>
@@ -62,19 +62,19 @@ const LoginWithoutHeaderAndFooter = () => {
               </Form.Group>
               <br />
               <Button variant="warning" type="submit" className="w-100 mb-3">
-                <Link to="/donasi" style={{ color: 'black', textDecoration: 'none' }}>Masuk</Link>
+                Masuk
               </Button>
               <p className="text-center">Atau</p>
-              <div className="text-center">
-                <p>
-                  Belum punya akun? <Link to="/register">Buat Akun</Link>
-                </p>
-              </div>
               <Button variant="warning" type="button" className="w-100 mb-3">
                 <AiOutlineGoogle style={{ color: 'black', marginRight: '8px' }} />
                 Masuk dengan Google
               </Button>
             </Form>
+            <div className="text-center">
+              <p>
+                Belum punya akun? <Link to="/register">Buat Akun</Link>
+              </p>
+            </div>
           </div>
         </Col>
       </Row>

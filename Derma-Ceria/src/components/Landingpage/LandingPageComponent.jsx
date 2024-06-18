@@ -12,7 +12,7 @@ import "../../index.css";
 const LandingPageComponent = () => {
   return (
     <div className={styles.carouselContainer}>
-      <Carousel className={styles.carousel} interval={40000} indicators={false}>
+      <Carousel className={styles.carousel} interval={5000} indicators={false}>
         <Carousel.Item>
           <img className="d-block w-100" src={Landing1} alt="First slide" />
           <Carousel.Caption className={styles.captionLandingLeft}>

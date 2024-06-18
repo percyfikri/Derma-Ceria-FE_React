@@ -5,6 +5,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import CardFilter from "../../components/CardFilter/CardFilter";
 import FilterComponent from "../../components/FilterComponent/FilterComponent";
 import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
+import Banner from "../../components/Banner/Banner";
 
 import styles from "./donasi.module.css";
 
@@ -25,7 +26,8 @@ const Donasi = () => {
   return (
     <div className={styles["body-donasi"]}>
       <div className={styles["landing-donasi-page"]}>
-        <LandingPageComponent />
+        {/* <LandingPageComponent /> */}
+        <Banner />
       </div>
 
       <div className={styles["donasi-card-img"]}>

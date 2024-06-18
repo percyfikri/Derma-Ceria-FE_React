@@ -12,7 +12,18 @@
 .titleCard {
   font-size: 18px;
   font-weight: 600;
-  padding-bottom: 1rem;
+  /* padding-bottom: 0.5rem; */
+}
+
+.labelCard {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: white;
+  background-color: grey;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 .progressBar {
@@ -28,7 +39,15 @@
   padding-top: 8px;
 }
 
+.profileAndButton{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .btnDonasi {
-  width: 100%;
-  padding: 1rem 0 0 0;
+  max-width: 100%;
+  margin-top: 3px;
+  /* width: 100%; */
+  /* padding: 1rem 0 0 0; */
 }

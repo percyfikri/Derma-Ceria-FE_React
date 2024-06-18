@@ -4,16 +4,16 @@ import Button from "react-bootstrap/Button";
 import styles from "./BuktiPembayaran.module.css";
 import BuktiImg from "../../assets/icons/correct.png";
 
-const BuktiPembayaran = ({ showBuktiModal, handleBuktiModalClose, formData, donationAmount, serviceFee }) => {
-  const referenceNumber = formData?.referenceNumber || "";
-  const date = formData?.date || "";
-  const time = formData?.time || "";
-  const paymentMethod = formData?.paymentMethod || "";
+const BuktiPembayaranBarang = ({ showBuktiModal, handleBuktiModalClose, formData, donationAmount, serviceFee, description, quantity, PaymentMethod }) => {
+  const referenceNumber = formData?.referenceNumber || "123456789";
+  const date = new Date().toLocaleDateString();
+  const time = new Date().toLocaleTimeString();
+  const paymentMethod = formData?.selectPaymentMe || "";
   const name = formData?.name || "";
   const isAnonymous = formData?.isAnonymous || false;
   const phone = formData?.phone || "";
 
-  const totalAmount = parseInt(donationAmount) + serviceFee;
+  const totalAmount = parseInt(donationAmount) + parseInt(serviceFee);
 
   const formatName = (name) => {
     if (name.length <= 2) return name;
@@ -30,14 +30,16 @@ const BuktiPembayaran = ({ showBuktiModal, handleBuktiModalClose, formData, dona
         <div className={styles.titleContainer}>
           <h5 className={styles.titlebukti}>Bukti Pembayaran</h5>
           <img src={BuktiImg} alt="Image" className={styles.image} />
-          <p className={styles.pstyletotal}><b>Rp. {formatCurrency(totalAmount)}</b></p>
+          <p className={styles.pstyletotal}>
+            <b>Rp. {formatCurrency(totalAmount)}</b>
+          </p>
         </div>
       </Modal.Header>
       <Modal.Body className={styles.buktiModal}>
         <div className={styles.row}>
           <div className={styles.label}>Nomor Referensi</div>
           <div className={styles.value}>{referenceNumber}</div>
-        </div>
+        </div>       
         <div className={styles.row}>
           <div className={styles.label}>Tanggal</div>
           <div className={styles.value}>{date}</div>
@@ -48,6 +50,14 @@ const BuktiPembayaran = ({ showBuktiModal, handleBuktiModalClose, formData, dona
         </div>
         <hr />
         <div className={styles.row}>
+          <div className={styles.label}>Keterangan Barang</div>
+          <div className={styles.value}>{description}</div>
+        </div>
+        <div className={styles.row}>
+          <div className={styles.label}>Jumlah Barang</div>
+          <div className={styles.value}>{quantity}</div>
+        </div>
+        {/* <div className={styles.row}>
           <div className={styles.label}>Metode Pembayaran</div>
           <div className={styles.value}>{paymentMethod}</div>
         </div>
@@ -58,7 +68,7 @@ const BuktiPembayaran = ({ showBuktiModal, handleBuktiModalClose, formData, dona
         <div className={styles.row}>
           <div className={styles.label}>No Telepon</div>
           <div className={styles.value}>{phone}</div>
-        </div>
+        </div> */}
       </Modal.Body>
       <Modal.Footer>
         <Button href="/donasi" className={styles.buttonstyle} variant="warning" onClick={handleBuktiModalClose}>
@@ -69,4 +79,4 @@ const BuktiPembayaran = ({ showBuktiModal, handleBuktiModalClose, formData, dona
   );
 };
 
-export default BuktiPembayaran;
+export default BuktiPembayaranBarang;

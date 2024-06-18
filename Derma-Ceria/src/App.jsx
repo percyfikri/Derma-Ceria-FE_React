@@ -42,6 +42,7 @@ import DetailZakat from "./pages/detailDonasi/detailZakat";
 import DetailQurban from "./pages/detailDonasi/detailQurban";
 
 import PayDonasiUang from "./pages/paymentDonasi/payDonasiUang"
+import PayDonasiBarang from "./pages/paymentDonasi/payDonasiBarang"
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
@@ -89,6 +90,7 @@ function App() {
         <Route path="/detailqurban" element={<DetailQurban />} />
 
         <Route path="/paydonasiuang" element={<PayDonasiUang />} />
+        <Route path="/paydonasibarang" element={<PayDonasiBarang />} />
         
       </Routes>
       {!isLoginPage && <Footer />}

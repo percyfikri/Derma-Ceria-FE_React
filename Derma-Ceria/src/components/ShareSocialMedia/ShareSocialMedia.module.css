@@ -1,0 +1,23 @@
+.customModal {
+    max-width: 500px;
+  }
+  
+  .shareModalBody {
+    text-align: center;
+  }
+  
+  .shareButtonsContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+  .shareButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 150px;
+    margin: 5px;
+  }
+  

@@ -2,20 +2,73 @@ import React, { useState } from "react";
 import { MDBSwitch } from "mdb-react-ui-kit";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import Modal from "react-bootstrap/Modal";
 import "../../index.css";
 import styles from "./paymentDonasi.module.css";
+import ModalBarang from "../../components/PopUpPemilihanBarang/ModalBarang";
+import ModalPembayaranUang from "../../components/PopUpPemilihanPembayaranUang/ModalPembayaranUang";
+import SuccessModal from "../../components/PopUpPemilihanPembayaranUang/SuccessModal";
+import BuktiPembayaran from "../../components/ModalBuktiPembayaran/BuktiPembayaran";
 
 const PayDonasiBarang = () => {
-  const [showModal, setShowModal] = useState(false);
+  const [showBarangModal, setShowBarangModal] = useState(false);
+  const [showPembayaranModal, setShowPembayaranModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showBuktiModal, setShowBuktiModal] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState("");
+  const [donationAmount, setDonationAmount] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    message: "",
+    isAnonymous: false,
+  });
 
-  const handleShow = () => setShowModal(true);
-  const handleClose = () => setShowModal(false);
+  const serviceFee = 2500;
+
+  const handleShowBarangModal = (productType) => {
+    setSelectedProduct({ type: productType });
+    setShowBarangModal(true);
+  };
+
+  const handleCloseBarangModal = () => setShowBarangModal(false);
+
+  const handleShowPembayaranModal = () => setShowPembayaranModal(true);
+  const handleClosePembayaranModal = () => setShowPembayaranModal(false);
+
+  const handleShowSuccessModal = () => setShowSuccessModal(true);
+  const handleCloseSuccessModal = () => setShowSuccessModal(false);
+
+  const handleShowBuktiModal = () => setShowBuktiModal(true);
+  const handleCloseBuktiModal = () => setShowBuktiModal(false);
+
+  const handleNextFromBarang = (productDetails) => {
+    setSelectedProduct({ ...selectedProduct, ...productDetails });
+    setShowBarangModal(false);
+    setShowPembayaranModal(true);
+  };
+
+  const handleSuccess = (paymentMethod) => {
+    setSelectedPaymentMethod(paymentMethod);
+    setShowPembayaranModal(false);
+    setShowSuccessModal(true);
+  };
+
+  const handleBuktiModalOpen = () => {
+    setShowSuccessModal(false);
+    setShowBuktiModal(true);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   return (
     <div className={styles["body-payment-donasi"]}>
       <div className={styles["title-donasiBarang"]}>
-        <h1>Donasi Barang</h1>
+        <h2>Donasi Barang</h2>
       </div>
       <div className={styles["container-donasiBarang"]}>
         <div className={styles["container-donasiBarang-left"]}>
@@ -29,97 +82,101 @@ const PayDonasiBarang = () => {
                 defaultChecked
                 id="flexSwitchCheckChecked"
                 label="Sembunyikan Nama Saya (Anonim)"
+                onChange={() => setFormData({ ...formData, isAnonymous: !formData.isAnonymous })}
               />
             </div>
             <Form className={`${styles["form-donasiBarang"]} mb-3`}>
               <Form.Group className={`${styles["form-group-donasiBarang"]} my-4`} controlId="formBasicName">
-                <Form.Control type="text" placeholder="Nama Lengkap" />
+                <Form.Control
+                  type="text"
+                  placeholder="Nama Lengkap"
+                  name="name"
+                  onChange={handleInputChange}
+                  value={formData.name}
+                />
               </Form.Group>
-              <Form.Group className={`${styles["form-group-donasiBarang"]} my-4`} controlId="formBasicPhone">
-                <Form.Control type="phone" placeholder="No. Telepon" />
+              <Form.Group className={`${styles["form-group-donasiUang"]} my-4`} controlId="formBasicPhone">
+                <Form.Control
+                  type="phone"
+                  placeholder="No. Telepon"
+                  name="phone"
+                  onChange={handleInputChange}
+                  value={formData.phone}
+                />
               </Form.Group>
-              <Form.Group className={`${styles["form-group-donasiBarang"]} my-4`} controlId="formBasicEmail">
-                <Form.Control type="email" placeholder="Email (Opsional)" />
+              <Form.Group className={`${styles["form-group-donasiUang"]} my-4`} controlId="formBasicEmail">
+                <Form.Control
+                  type="email"
+                  placeholder="Email (Opsional)"
+                  name="email"
+                  onChange={handleInputChange}
+                  value={formData.email}
+                />
               </Form.Group>
-              <Form.Group className={`${styles["form-group-donasiBarang"]} my-4`} controlId="formBasicMessage">
-                <Form.Control as="textarea" placeholder="Pesan (Opsional)" style={{ height: "5rem" }} />
+              <Form.Group className={`${styles["form-group-donasiUang"]} my-4`} controlId="formBasicMessage">
+                <Form.Control
+                  as="textarea"
+                  placeholder="Pesan (Opsional)"
+                  style={{ height: "5rem" }}
+                  name="message"
+                  onChange={handleInputChange}
+                  value={formData.message}
+                />
               </Form.Group>
             </Form>
           </div>
         </div>
 
         <div className={styles["container-donasiBarang-right"]}>
-          <div className={styles["title-Pilihan"]}>
+          <div className={styles["title-Pembayaran"]}>
             <h3>Pilih Jenis Donasi</h3>
           </div>
-          <div className={styles["button-container"]}>
-            <Button className={`${styles["button-pilihan"]} ${styles["white-button"]}`} onClick={handleShow}>
+          <div>
+            <Button className={styles["button-donasi"]} onClick={() => handleShowBarangModal("Makanan")}>
               Makanan
             </Button>
-            <Button className={`${styles["button-pilihan"]} ${styles["white-button"]}`} onClick={handleShow}>
+            <Button className={styles["button-donasi"]} onClick={() => handleShowBarangModal("Pakaian")}>
               Pakaian
             </Button>
-            <Button className={`${styles["button-pilihan"]} ${styles["white-button"]}`} onClick={handleShow}>
-              Barang Bekas
+            <Button className={styles["button-donasi"]} onClick={() => handleShowBarangModal("Barang")}>
+              Barang Lain
             </Button>
           </div>
         </div>
       </div>
 
-      {/* Modal untuk Pembayaran Barang */}
-      <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Rincian Pembayaran</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="formImage">
-              <Form.Label>Gambar</Form.Label>
-              <Form.Control type="file" />
-            </Form.Group>
-            <Form.Group controlId="formRefNumber">
-              <Form.Label>Nomor Referensi</Form.Label>
-              <Form.Control type="text" placeholder="Masukkan nomor referensi" />
-            </Form.Group>
-            <Form.Group controlId="formDate">
-              <Form.Label>Tanggal</Form.Label>
-              <Form.Control type="date" />
-            </Form.Group>
-            <Form.Group controlId="formTime">
-              <Form.Label>Waktu</Form.Label>
-              <Form.Control type="time" />
-            </Form.Group>
-            <hr />
-            {/* Metode Pembayaran */}
-            <h6 className={styles.buktiTitle}>Metode Pembayaran</h6>
-            <div className={styles.buktiMethod}>
-              <Form.Check type="radio" id="bukti-1" name="buktiMethod" label="GoPay" className={styles.buktiLabel}>
-                <img src="src/assets/logos/GoPay.png" alt="GoPay" className={styles.buktiImage} />
-              </Form.Check>
-            </div>
-            <div className={styles.buktiMethod}>
-              <Form.Check type="radio" id="bukti-2" name="buktiMethod" label="Dana" className={styles.buktiLabel}>
-                <img src="/src/assets/logos/Dana.png" alt="Dana" className={styles.buktiImage} />
-              </Form.Check>
-            </div>
-            <hr />
-            {/* Informasi Pengguna */}
-            <Form.Group controlId="formName">
-              <Form.Label>Nama</Form.Label>
-              <Form.Control type="text" placeholder="Masukkan nama Anda" />
-            </Form.Group>
-            <Form.Group controlId="formPhoneNumber">
-              <Form.Label>Nomor Telepon</Form.Label>
-              <Form.Control type="tel" placeholder="Masukkan nomor telepon Anda" />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Kembali
-          </Button>
-        </Modal.Footer>
-      </Modal>
+      {/* Modal Barang */}
+      <ModalBarang
+        showBarangModal={showBarangModal}
+        handleClose={handleCloseBarangModal}
+        handleNext={handleNextFromBarang}
+        selectedProduct={selectedProduct}
+      />
+
+      {/* Modal Pembayaran Uang */}
+      <ModalPembayaranUang
+        showModal={showPembayaranModal}
+        handleClose={handleClosePembayaranModal}
+        donationAmount={donationAmount}
+        serviceFee={serviceFee}
+        onSuccess={handleSuccess}
+      />
+
+      {/* Modal Sukses */}
+      <SuccessModal
+        showSuccessModal={showSuccessModal}
+        handleSuccessClose={handleBuktiModalOpen}
+      />
+
+      {/* Modal Bukti Pembayaran */}
+      <BuktiPembayaran
+        showBuktiModal={showBuktiModal}
+        handleBuktiModalClose={handleCloseBuktiModal}
+        formData={selectedProduct}
+        donationAmount={donationAmount}
+        serviceFee={serviceFee}
+        paymentMethod={selectedPaymentMethod} 
+      />
     </div>
   );
 };

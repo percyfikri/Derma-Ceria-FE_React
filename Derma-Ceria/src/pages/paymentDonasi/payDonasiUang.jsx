@@ -4,13 +4,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import "../../index.css";
 import styles from "./paymentDonasi.module.css";
-import ModalPembayaranUang from "../../components/PopUpPemilihanPembayaranUang/ModalPembayaranUang";
 import BuktiPembayaran from "../../components/ModalBuktiPembayaran/BuktiPembayaran";
+import SuccessModal from "../../components/PopUpPemilihanPembayaranUang/SuccessModal"; 
+import ModalPembayaranUang from "../../components/PopUpPemilihanPembayaranUang/ModalPembayaranUang"; // Perbaiki impor ini
 
 const PayDonasiUang = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showBuktiModal, setShowBuktiModal] = useState(false);
-  const [donationAmount, setDonationAmount] = useState("");
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
@@ -18,11 +19,12 @@ const PayDonasiUang = () => {
     message: "",
     isAnonymous: true,
     paymentMethod: "",
-    referenceNumber: "123456", // Example reference number
+    referenceNumber: "123456",
     date: new Date().toLocaleDateString(),
     time: new Date().toLocaleTimeString()
   });
-  const serviceFee = 2500; // Fixed service fee of Rp. 2000
+  const [donationAmount, setDonationAmount] = useState("");
+  const serviceFee = 2500;
 
   const handleShow = () => setShowModal(true);
   const handleClose = () => setShowModal(false);
@@ -41,16 +43,20 @@ const PayDonasiUang = () => {
   };
 
   const handleSuccess = (paymentMethod) => {
-    setFormData({ ...formData, paymentMethod });
-    setShowBuktiModal(true);
+    setFormData((prevFormData) => ({ ...prevFormData, paymentMethod }));
+    setShowSuccessModal(true);
+    setShowModal(false);
   };
 
-  const handleBuktiModalClose = () => setShowBuktiModal(false);
+  const handleBuktiModalOpen = () => {
+    setShowSuccessModal(false);
+    setShowBuktiModal(true);
+  };
 
   return (
     <div className={styles["body-payment-donasi"]}>
       <div className={styles["title-donasiUang"]}>
-        <h1>Donasi Uang</h1>
+        <h2>Donasi Uang</h2>
       </div>
       <div className={styles["container-donasiUang"]}>
         <div className={styles["container-donasiUang-left"]}>
@@ -151,13 +157,19 @@ const PayDonasiUang = () => {
         onSuccess={handleSuccess}
       />
 
+      <SuccessModal
+        showSuccessModal={showSuccessModal}
+        handleSuccessClose={handleBuktiModalOpen} // Menutup modal sukses dan membuka modal bukti pembayaran
+      />
+
       <BuktiPembayaran
         showBuktiModal={showBuktiModal}
-        handleBuktiModalClose={handleBuktiModalClose}
+        handleBuktiModalClose={() => setShowBuktiModal(false)}
         formData={formData}
         donationAmount={donationAmount}
         serviceFee={serviceFee}
       />
+
     </div>
   );
 };

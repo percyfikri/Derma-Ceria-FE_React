@@ -37,9 +37,6 @@ const NavbarComponent = () => {
                   <Nav.Link href="/blog" className={`${styles.navLink} text-white me-4`}>
                     Blog
                   </Nav.Link>
-                  <Nav.Link href="/tentangkami" className={`${styles.navLink} text-white me-4`}>
-                    About
-                  </Nav.Link>
                 </Nav>
               </div>
               {/* End Navbar */}

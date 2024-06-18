@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
-import styles from './PopUpPemilihanPembayaran.module.css';
+import styles from './PopUpPemilihanBarang.module.css';
+import SuccessModalBarang from '../../components/PopUpPemilihanBarang/SuccessModalBarang';
+import BuktiPembayaranBarang from '../../components/ModalBuktiPembayaran/BuktiPembayaranBarang';
 
-const ModalPembayaranUang = ({ showModal, handleClose, donationAmount, serviceFee, onSuccess }) => {
+const ModalPembayaranBarang = ({ showModal, handleClose, donationAmount = 2500, serviceFee = 0, onSuccess, selectedProduct, description, quantity }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const buktiMethods = [
     { id: 1, name: 'GoPay', image: 'src/assets/logos/GoPay.png', title: 'E-Wallet' },
@@ -22,7 +25,7 @@ const ModalPembayaranUang = ({ showModal, handleClose, donationAmount, serviceFe
     return acc;
   }, {});
 
-  const totalAmount = parseInt(donationAmount) + serviceFee;
+  const totalAmount = parseInt(donationAmount) + parseInt(serviceFee);
 
   const formatCurrency = (amount) => {
     return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -30,12 +33,18 @@ const ModalPembayaranUang = ({ showModal, handleClose, donationAmount, serviceFe
 
   const handleDonasiClick = () => {
     onSuccess(selectedPaymentMethod);
+    setShowSuccessModal(true);
+    handleClose();
   };
 
-  const handlePilihPengirimanClick = () => {
-    // Lakukan apa yang diperlukan ketika tombol "Pilih Jenis Pengiriman" diklik
-    console.log("Jenis pengiriman dipilih:", selectedPaymentMethod);
+  const handleSuccessClose = () => {
+    setShowSuccessModal(false);
   };
+
+  useEffect(() => {
+    // Reset the selected payment method when the modal is reopened
+    setSelectedPaymentMethod("");
+  }, [showModal]);
 
   return (
     <div className={styles.bodyPembayaranUang}>
@@ -68,25 +77,46 @@ const ModalPembayaranUang = ({ showModal, handleClose, donationAmount, serviceFe
             ))}
           </Form>
         </Modal.Body>
-        <h6 className={styles.paymentDetailsTitle}>Rincian Pembayaran</h6>
-        <div className={`${styles.paymentAmountRight} ${styles.paymentDetailsFirst}`}>
-          <p className={styles.paymentDetailsContent}>Nominal Donasi:</p>
-          <p className={styles.paymentDetailsContent}>Rp. {formatCurrency(donationAmount)}</p>
-        </div>
-        <div className={`${styles.paymentAmountRight} ${styles.paymentDetailsFirst}`}>
-          <p className={styles.paymentDetailsContent}>Biaya Layanan:</p>
-          <p className={styles.paymentDetailsContent}>Rp. {formatCurrency(serviceFee)}</p>
-        </div>
-        <div className={`${styles.paymentAmountRight} ${styles.paymentDetailsFirst}`}>
-          <p className={styles.paymentDetailsContent1}><b>Total:</b></p>
-          <p className={styles.paymentDetailsContent1}><b>Rp. {formatCurrency(totalAmount)}</b></p>
+        <div className={styles.paymentDetails}>
+          <h6 className={styles.paymentDetailsTitle}>Rincian Pembayaran</h6>
+          <div className={styles.paymentAmount}>
+            {/* <p className={styles.paymentDetailsContent}>Deskripsi Barang: {description}</p>
+            <p className={styles.paymentDetailsContent}>Jumlah Barang: {quantity}</p> */}
+            <p className={styles.paymentDetailsContent}>Biaya Layanan : Rp. {formatCurrency(donationAmount)}</p>
+          </div>
+          <div className={styles.paymentAmount}>
+            <p className={styles.paymentDetailsContent}>Biaya Ongkir: Rp. {formatCurrency(serviceFee)}</p>
+          </div>
+          <div className={styles.paymentAmount}>
+            <p className={styles.paymentDetailsContent}><b>Total: Rp. {formatCurrency(totalAmount)}</b></p>
+          </div>
         </div>
         <Modal.Footer>
-          <Button className={styles.buttonPembayaran} variant="warning" onClick={handleDonasiClick} disabled={!selectedPaymentMethod}>Donasi</Button>
+          <Button className={styles.buttonPembayaran} variant="warning" onClick={handleDonasiClick} disabled={!selectedPaymentMethod}>
+            Donasi
+          </Button>
         </Modal.Footer>
       </Modal>
+      
+      <SuccessModalBarang
+        showSuccessModal={showSuccessModal}
+        handleSuccessClose={handleSuccessClose}
+      />
+
+      <BuktiPembayaranBarang
+        showBuktiModal={showSuccessModal}
+        handleBuktiModalClose={handleSuccessClose}
+        formData={selectedProduct}
+        donationAmount={donationAmount}
+        serviceFee={serviceFee}
+        description={description}
+        quantity={quantity}
+        paymentMethod={selectedPaymentMethod}
+            />
     </div>
   );
 };
 
-export default ModalPembayaranUang;
+export default ModalPembayaranBarang;
+
+

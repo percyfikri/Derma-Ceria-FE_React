@@ -13,7 +13,7 @@
 }
 
 .register-form a {
-  color: #ffc107; /* Warna kuning */
+  color: #ffc107; 
 }
 
 .register-form a:hover {
@@ -25,7 +25,7 @@
 }
 
 .small-text {
-  font-size: 0.8rem; /* Ukuran tulisan lebih kecil */
+  font-size: 0.8rem; 
 }
 
 .logo-container {
@@ -35,14 +35,35 @@
 }
 
 .logo {
-  width: 250px; /* Ukuran logo */
+  width: 250px; 
   height: auto;
 }
 
 .overlay-text {
-  background-image: url("../../assets/images/loginregister.jpg");
+  background-image: url("../../assets/images/Background.jpg");
   background-size: cover;
   background-position: center;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.row {
+  margin: 0;
+  width: 100%;
+}
+
+.col-md-6 {
+  padding: 0;
 }
 
 .google-icon {

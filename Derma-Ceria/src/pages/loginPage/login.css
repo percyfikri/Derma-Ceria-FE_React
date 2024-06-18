@@ -1,6 +1,6 @@
 .login-form {
   background-color: rgba(180, 180, 180, 0.315);
-  padding: 70px; /* Mengurangi padding untuk membuat form lebih pendek */
+  padding: 60px; 
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
   color: rgb(0, 0, 0);
@@ -40,7 +40,7 @@
 }
 
 .overlay-text {
-  background-image: url("../../assets/images/loginregister.jpg");
+  background-image: url("../../assets/images/Background.jpg");
   background-size: cover;
   background-position: center;
 }

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { AiOutlineGoogle } from "react-icons/ai"; // Ganti impor ikon
+import { AiOutlineGoogle } from "react-icons/ai";
 import Logo from "../../assets/logos/logoHorizontal.png";
 import "../../index.css";
 import "./register.css";
@@ -71,22 +71,20 @@ const Register = () => {
                   <option value="2">Penggalang Dana</option>
                 </Form.Select>
               </Form.Group>
-              <Link to="/" style={{ textDecoration: 'none' }}>
-                <Button variant="warning" type="button" className="w-100 mb-3">
-                  Daftar
-                </Button>
-              </Link>
+              <Button variant="warning" type="submit" className="w-100 mb-3">
+                Daftar
+              </Button>
               <p className="text-center">Atau</p>
-              <div className="text-center">
-                <p>
-                  Sudah punya akun? <Link to="/login">Masuk</Link>
-                </p>
-              </div>
               <Button variant="warning" type="button" className="w-100 mb-3">
                 <AiOutlineGoogle style={{ color: "black", marginRight: "8px" }} />
                 Masuk dengan Google
               </Button>
             </Form>
+            <div className="text-center">
+              <p>
+                Sudah punya akun? <Link to="/login">Masuk</Link>
+              </p>
+            </div>
           </div>
         </Col>
       </Row>

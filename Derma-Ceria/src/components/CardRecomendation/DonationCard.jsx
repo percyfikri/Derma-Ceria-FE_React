@@ -2,8 +2,9 @@ import React from "react";
 import { Card, Col, ProgressBar, Row } from "react-bootstrap";
 import styles from "../CardRecomendation/DonationCard.module.css";
 import ProfileComponent from "../ProfileComponent";
+import { Link } from "react-router-dom";
 
-const DonationCard = ({ imageSrc, title, target, progress, amount }) => {
+const DonationCard = ({ imageSrc, label, title, target, progress, amount, linkButton }) => {
   return (
     <div>
       <Card className={styles.cardRec}>
@@ -11,6 +12,9 @@ const DonationCard = ({ imageSrc, title, target, progress, amount }) => {
           <Card.Img variant="top" src={imageSrc} />
         </div>
         <Card.Body>
+          <div className={styles.labelCard}>
+            <Card.Text>{label}</Card.Text>
+          </div>
           <div className={styles.titleCard}>
             <Card.Text>{title}</Card.Text>
           </div>
@@ -22,12 +26,20 @@ const DonationCard = ({ imageSrc, title, target, progress, amount }) => {
               <strong>Rp. {amount}</strong> terkumpul dari Rp. {target}
             </Card.Text>
           </div>
-          <ProfileComponent/>
+          <div className={styles.profileAndButton}>
+            <ProfileComponent />
+            <div className={styles.btnDonasi}>
+              <Link to={linkButton} className={`btn btn-warning ${styles.btnDonasi}`}>
+                Donasi
+              </Link>
+            </div>
+          </div>
+          {/* <ProfileComponent />
           <div className={styles.btnDonasi}>
             <button className="btn btn-warning" style={{ maxWidth: "100%", width: "100%" }}>
               Donasi
             </button>
-          </div>
+          </div> */}
         </Card.Body>
       </Card>
     </div>

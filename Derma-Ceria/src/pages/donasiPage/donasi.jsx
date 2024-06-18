@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Container } from "react-bootstrap";
-import "./donasi.module.css";
 
 import CardFilter from "../../components/CardFilter/CardFilter";
 import FilterComponent from "../../components/FilterComponent/FilterComponent";
 import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
+import Banner from "../../components/Banner/Banner";
 
 import styles from "./donasi.module.css";
 
-import CardImg1 from "../../assets/images/kampanye7.png";
+import CardImg1 from "../../assets/images/kampanye1.png";
 import CardImg2 from "../../assets/images/kampanye2.png";
 import CardImg3 from "../../assets/images/kampanye3.png";
 import CardImg4 from "../../assets/images/kampanye4.jpg";
@@ -26,7 +26,8 @@ const Donasi = () => {
   return (
     <div className={styles["body-donasi"]}>
       <div className={styles["landing-donasi-page"]}>
-        <LandingPageComponent />
+        {/* <LandingPageComponent /> */}
+        <Banner />
       </div>
 
       <div className={styles["donasi-card-img"]}>

@@ -27,14 +27,12 @@ const CardFilter = ({ imageSrc, label, title, dari, progress, terkumpul, LinkBut
               <strong>Rp. {terkumpul}</strong> terkumpul dari Rp. {dari}
             </Card.Text>
           </div>
-          <div>
             <div className={styles.profileAndButton}>
               <ProfileComponent />
               <Link to={LinkButton} className={`btn btn-warning ${styles.btnDonasi}`}>
                 Donasi
               </Link>
             </div>
-          </div>
         </Card.Body>
       </Card>
     </div>

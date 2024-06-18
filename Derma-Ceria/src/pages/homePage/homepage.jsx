@@ -18,42 +18,17 @@ import Cardrec4 from "../../assets/images/homepage4.jpeg";
 import Cardrec5 from "../../assets/images/homepage5.jpeg";
 import Cardrec6 from "../../assets/images/homepage6.jpeg";
 
+import Banner from "../../components/Banner/Banner.jsx";
 import DonationCard from "../../components/CardRecomendation/DonationCard";
 
 import styles from "./homepage.module.css";
 import "../../index.css";
 
-
 const homepage = () => {
   return (
     <div className="body">
       {/* Banner */}
-
-      <div className={styles.banner1}>
-        <Row>
-          <Col>
-            <div className="banner-left">
-              <h1>
-                Pintu Menuju <br />
-                Kebahagiaan
-              </h1>
-              <p>
-                Donasi adalah kilatan cahaya di tengah kegelapan, sebuah pelukan hangat dalam dinginnya dunia. Dengan memberi, kita menghidupkan percikan harapan, memperkuat jalinan kemanusiaan, dan membawa keajaiban bagi mereka yang
-                membutuhkan.
-              </p>
-              <div className="d-flex justify-content-start" style={{ marginLeft: "8rem" }}>
-                <a href="#" className="btn btn-warning" style={{ fontSize: "0.9rem" }}>
-                  Lihat Selengkapnya
-                </a>
-              </div>
-            </div>
-          </Col>
-          <Col>
-            <div className="banner-right"></div>
-          </Col>
-        </Row>
-      </div>
-
+      <Banner />
       {/* Banner */}
 
       {/* Pilih Kategori Donasi */}
@@ -64,7 +39,7 @@ const homepage = () => {
             <Row>
               <Col>
                 <div className={`${styles.itemCategory} text-center mt-3`}>
-                  <a href="#" style={{ textDecoration: "none", fontWeight: "bold", color: "inherit" }}>
+                  <a href="/pendidikan" style={{ textDecoration: "none", fontWeight: "bold", color: "inherit" }}>
                     <img src={Pendidikan} alt="icon pendidikan" style={{ maxWidth: "120px" }} />
                     <p className="size-desc-category mt-4 mb-0">Pendidikan</p>
                   </a>
@@ -72,7 +47,7 @@ const homepage = () => {
               </Col>
               <Col>
                 <div className={`${styles.itemCategory} text-center mt-3`}>
-                  <a href="#" style={{ textDecoration: "none", fontWeight: "bold", color: "inherit" }}>
+                  <a href="/kesehatan" style={{ textDecoration: "none", fontWeight: "bold", color: "inherit" }}>
                     <img src={Kesehatan} alt="icon Kesehatan" style={{ maxWidth: "120px" }} />
                     <p className="size-desc-category mt-4 mb-0">Kesehatan</p>
                   </a>
@@ -80,7 +55,7 @@ const homepage = () => {
               </Col>
               <Col>
                 <div className={`${styles.itemCategory} text-center mt-3`}>
-                  <a href="#" style={{ textDecoration: "none", fontWeight: "bold", color: "inherit" }}>
+                  <a href="/bencana" style={{ textDecoration: "none", fontWeight: "bold", color: "inherit" }}>
                     <img src={Bencana} alt="icon Bencana" style={{ maxWidth: "120px" }} />
                     <p className="size-desc-category mt-4 mb-0">Bencana Alam</p>
                   </a>
@@ -88,7 +63,7 @@ const homepage = () => {
               </Col>
               <Col>
                 <div className={`${styles.itemCategory} text-center mt-3`}>
-                  <a href="#" style={{ textDecoration: "none", fontWeight: "bold", color: "inherit" }}>
+                  <a href="/teknologi" style={{ textDecoration: "none", fontWeight: "bold", color: "inherit" }}>
                     <img src={Teknologi} alt="icon Teknologi" style={{ maxWidth: "120px" }} />
                     <p className="size-desc-category mt-4 mb-0">Teknologi</p>
                   </a>
@@ -96,7 +71,7 @@ const homepage = () => {
               </Col>
               <Col>
                 <div className={`${styles.itemCategory} text-center mt-3`}>
-                  <a href="#" style={{ textDecoration: "none", fontWeight: "bold", color: "inherit" }}>
+                  <a href="/sosial" style={{ textDecoration: "none", fontWeight: "bold", color: "inherit" }}>
                     <img src={Sosial} alt="icon Sosial" style={{ maxWidth: "120px" }} />
                     <p className="size-desc-category mt-4 mb-0">Sosial</p>
                   </a>
@@ -117,26 +92,26 @@ const homepage = () => {
           <Carousel.Item>
             <Row className="justify-content-center">
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec1} title="Bantuan untuk anak Indonesia!" target="9.900.000" progress={30} amount="33.000.000" />
+                <DonationCard imageSrc={Cardrec1} label={"Sosial"} title="Bantuan untuk anak Indonesia!" target="9.900.000" progress={30} amount="33.000.000" LinkButton={"/sosial"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec2} title="Donasi Korban Banjir" target="37.500.000" progress={75} amount="50.000.000" />
+                <DonationCard imageSrc={Cardrec2} label={"Bencana"} title="Donasi Korban Banjir" target="37.500.000" progress={75} amount="50.000.000" LinkButton={"/bencana"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec3} title="Donasi Korban Gempa Bumi" target="90.000.000" progress={90} amount="100.000.000" />
+                <DonationCard imageSrc={Cardrec3} label={"Bencana"} title="Donasi Korban Gempa Bumi" target="90.000.000" progress={90} amount="100.000.000" LinkButton={"/bencana"} />
               </Col>
             </Row>
           </Carousel.Item>
           <Carousel.Item>
             <Row className="justify-content-center">
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec4} title="Donasi Korban Erupsi" target="52.000.000" progress={65} amount="80.000.000" />
+                <DonationCard label={"Bencana"} imageSrc={Cardrec4} title="Donasi Korban Erupsi" target="52.000.000" progress={65} amount="80.000.000" linkButton={"/"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec5} title="Donasi Untuk Palestina" target="90.000.000" progress={75} amount="120.000.000" />
+                <DonationCard label={"Sosial"} imageSrc={Cardrec5} title="Donasi Untuk Palestina" target="90.000.000" progress={75} amount="120.000.000" linkButton={"/"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec6} title="Donasi Pembebasan Lahan" target="40.000.000" progress={40} amount="100.000.000" />
+                <DonationCard label={"Sosial"} imageSrc={Cardrec6} title="Donasi Pembebasan Lahan" target="40.000.000" progress={40} amount="100.000.000" linkButton={"/"} />
               </Col>
             </Row>
           </Carousel.Item>
@@ -177,26 +152,26 @@ const homepage = () => {
           <Carousel.Item>
             <Row className="justify-content-center">
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec1} title="Bantuan untuk anak Indonesia!" target="9.900.000" progress={30} amount="33.000.000" />
+                <DonationCard imageSrc={Cardrec1} label={"Sosial"} title="Bantuan untuk anak Indonesia!" target="9.900.000" progress={30} amount="33.000.000" LinkButton={"/sosial"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec2} title="Donasi Korban Banjir" target="37.500.000" progress={75} amount="50.000.000" />
+                <DonationCard imageSrc={Cardrec2} label={"Bencana"} title="Donasi Korban Banjir" target="37.500.000" progress={75} amount="50.000.000" LinkButton={"/bencana"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec3} title="Donasi Korban Gempa Bumi" target="90.000.000" progress={90} amount="100.000.000" />
+                <DonationCard imageSrc={Cardrec3} label={"Bencana"} title="Donasi Korban Gempa Bumi" target="90.000.000" progress={90} amount="100.000.000" LinkButton={"/bencana"} />
               </Col>
             </Row>
           </Carousel.Item>
           <Carousel.Item>
             <Row className="justify-content-center">
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec4} title="Donasi Korban Erupsi" target="52.000.000" progress={65} amount="80.000.000" />
+                <DonationCard label={"Bencana"} imageSrc={Cardrec4} title="Donasi Korban Erupsi" target="52.000.000" progress={65} amount="80.000.000" linkButton={"/"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec5} title="Donasi Untuk Palestina" target="90.000.000" progress={75} amount="120.000.000" />
+                <DonationCard label={"Sosial"} imageSrc={Cardrec5} title="Donasi Untuk Palestina" target="90.000.000" progress={75} amount="120.000.000" linkButton={"/"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec6} title="Donasi Pembebasan Lahan" target="40.000.000" progress={40} amount="100.000.000" />
+                <DonationCard label={"Sosial"} imageSrc={Cardrec6} title="Donasi Pembebasan Lahan" target="40.000.000" progress={40} amount="100.000.000" linkButton={"/"} />
               </Col>
             </Row>
           </Carousel.Item>
@@ -230,50 +205,12 @@ const homepage = () => {
 
       {/* Banner ke-2 */}
 
-      {/* card TemanPeduli */}
-
-      <div className={styles.containerTemanPeduli}>
-        <div className={styles.title}>#TemanPeduli</div>
-        <Carousel className={styles.carousell} interval={3000} indicators={false}>
-          <Carousel.Item>
-            <Row className="justify-content-center">
-              <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec1} title="Bantuan untuk anak Indonesia!" target="9.900.000" progress={30} amount="33.000.000" />
-              </Col>
-              <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec2} title="Donasi Korban Banjir" target="37.500.000" progress={75} amount="50.000.000" />
-              </Col>
-              <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec3} title="Donasi Korban Gempa Bumi" target="90.000.000" progress={90} amount="100.000.000" />
-              </Col>
-            </Row>
-          </Carousel.Item>
-          <Carousel.Item>
-            <Row className="justify-content-center">
-              <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec4} title="Donasi Korban Erupsi" target="52.000.000" progress={65} amount="80.000.000" />
-              </Col>
-              <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec5} title="Donasi Untuk Palestina" target="90.000.000" progress={75} amount="120.000.000" />
-              </Col>
-              <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec6} title="Donasi Pembebasan Lahan" target="40.000.000" progress={40} amount="100.000.000" />
-              </Col>
-            </Row>
-          </Carousel.Item>
-        </Carousel>
-      </div>
-
-      {/* end card TemanPeduli */}
-
       {/* #BrandPeduli */}
-      
+
       <div className={styles.containerBrandPeduli}>
         <Card className={styles.cardBrandPeduli}>
           <div className={`${styles.title} text-center `}>#BrandPeduli</div>
           <Row className="mx-0">
-            {" "}
-            {/* Ensure the Row does not exceed the screen width by removing default margins */}
             <Col>
               <div className="text-center mt-3">
                 <a href="#" style={{ textDecoration: "none", fontWeight: "bold", color: "inherit" }}>

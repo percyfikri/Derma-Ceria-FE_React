@@ -6,7 +6,7 @@ import Logo from "../../assets/logos/logoHorizontal.png";
 import "../../index.css";
 import "./login.css";
 
-const LoginWithoutHeaderAndFooter = () => {
+const LoginWithoutFooter = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -25,6 +25,8 @@ const LoginWithoutHeaderAndFooter = () => {
     setEmail("");
     setPassword("");
   };
+
+  
 
   return (
     <Container fluid className="vh-100 d-flex align-items-center justify-content-center overlay-text">
@@ -82,4 +84,4 @@ const LoginWithoutHeaderAndFooter = () => {
   );
 };
 
-export default LoginWithoutHeaderAndFooter;
+export default LoginWithoutFooter;

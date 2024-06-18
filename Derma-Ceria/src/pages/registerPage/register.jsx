@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineGoogle } from "react-icons/ai";
 import Logo from "../../assets/logos/logoHorizontal.png";
 import "../../index.css";
 import "./register.css";
+import { auth, provider } from '../../pages/loginPage/firebase';
+import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleNameChange = (e) => setName(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
@@ -17,12 +20,31 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    setName("");
-    setEmail("");
-    setPassword("");
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log("User Info:", user);
+        // You can save the user info to database here if needed
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.error("Error during sign up with email and password:", error);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log("User Info:", user);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.error("Error during sign in with Google:", error);
+      });
   };
 
   return (
@@ -75,7 +97,7 @@ const Register = () => {
                 Daftar
               </Button>
               <p className="text-center">Atau</p>
-              <Button variant="warning" type="button" className="w-100 mb-3">
+              <Button variant="warning" type="button" className="w-100 mb-3" onClick={handleGoogleLogin}>
                 <AiOutlineGoogle style={{ color: "black", marginRight: "8px" }} />
                 Masuk dengan Google
               </Button>

@@ -1,14 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineGoogle } from 'react-icons/ai';
 import Logo from "../../assets/logos/logoHorizontal.png";
 import "../../index.css";
 import "./login.css";
+import { auth, provider } from './firebase';
+import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 
 const LoginWithoutFooter = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigate("/dashboard");
+      }
+    });
+    return unsubscribe;
+  }, [navigate]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -26,13 +38,25 @@ const LoginWithoutFooter = () => {
     setPassword("");
   };
 
-  
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log("User Info:", user);
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        console.error("Error during sign in with Google:", error);
+      });
+  };
 
   return (
     <Container fluid className="vh-100 d-flex align-items-center justify-content-center overlay-text">
       <Row className="w-100">
         <Col md={6} className="d-none d-md-block p-0">
-          <div className="h-100 w-100">{/* mengosongkan bagian kiri */}</div>
+          <div className="h-100 w-100"></div>
           <div className="copyright-text">
             <h4>Derma Ceria</h4>
             <p>Satukan hati, berbagi kebaikan</p>
@@ -67,7 +91,7 @@ const LoginWithoutFooter = () => {
                 Masuk
               </Button>
               <p className="text-center">Atau</p>
-              <Button variant="warning" type="button" className="w-100 mb-3">
+              <Button variant="warning" type="button" className="w-100 mb-3" onClick={handleGoogleLogin}>
                 <AiOutlineGoogle style={{ color: 'black', marginRight: '8px' }} />
                 Masuk dengan Google
               </Button>

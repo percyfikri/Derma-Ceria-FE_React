@@ -18,7 +18,7 @@ const Sidebar = () => {
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link as={NavLink} to="/program-kampanye" className="text-white">
+          <Nav.Link as={NavLink} to="/programKampanye" className="text-white">
             <People className="me-2" /> Program Kampanye
           </Nav.Link>
         </Nav.Item>

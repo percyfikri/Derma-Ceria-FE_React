@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import styles from './YourStyles.module.css';
+import styles from './ProfileImage.module.css';
 
 const ProfileImage = ({ 
   titleProfile, 

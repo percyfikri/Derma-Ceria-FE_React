@@ -23,12 +23,14 @@ import DonationCard from "../../components/CardRecomendation/DonationCard";
 
 import styles from "./homepage.module.css";
 import "../../index.css";
+import LandingPageComponent from "../../components/Landingpage/LandingPageComponent.jsx";
 
 const homepage = () => {
   return (
     <div className="body">
       {/* Banner */}
-      <Banner />
+      {/* <Banner /> */}
+      <LandingPageComponent/>
       {/* Banner */}
 
       {/* Pilih Kategori Donasi */}

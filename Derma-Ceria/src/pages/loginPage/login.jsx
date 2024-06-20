@@ -53,6 +53,7 @@ const LoginWithoutFooter = () => {
       });
   };
 
+    
   return (
     <Container fluid className="vh-100 d-flex align-items-center justify-content-center overlay-text">
       <Row className="w-100">
@@ -65,7 +66,7 @@ const LoginWithoutFooter = () => {
           </div>
         </Col>
         <Col md={6} className="d-flex flex-column align-items-center justify-content-center">
-          <div className="login-form" style={{ maxWidth: "550px", width: "100%" }}>
+          <div className="login-form" style={{ maxWidth: "500px", width: "100%", height: "620px" }}>
             <div className="text-center mb-1">
               <div className="logo-container">
                 <img src={Logo} alt="Logo" className="logo" />
@@ -84,7 +85,7 @@ const LoginWithoutFooter = () => {
                 <Form.Select className="form-control-custom">
                   <option>Pilih Role</option>
                   <option value="1">Donatur</option>
-                  <option value="2">Penggalang Dana</option>
+                  <option value="2">Benefisiari</option>
                 </Form.Select>
               </Form.Group>
               <br />

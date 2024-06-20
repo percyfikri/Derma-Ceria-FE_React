@@ -74,7 +74,7 @@ const Register = () => {
           </div>
         </Col>
         <Col md={6} className="d-flex flex-column align-items-center justify-content-center">
-          <div className="register-form" style={{ maxWidth: "550px", width: "100%" }}>
+          <div className="register-form" style={{ maxWidth: "500px", width: "100%", height: "624px"}}>
             <div className="text-center mb-1">
               <div className="logo-container">
                 <Link to="/">

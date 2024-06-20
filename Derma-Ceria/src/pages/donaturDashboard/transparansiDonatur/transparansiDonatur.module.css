@@ -11,8 +11,8 @@
 }
 
 .cardMarginBottom {
-    left: 2500;
-margin: 0 -10px 0 -100px;
+    transform: translateX(-50px); /* Adjust the negative value to move the card left */
+    margin: 0 0 10px -50px;
 }
 
 .testimonialRow {
@@ -21,15 +21,16 @@ margin: 0 -10px 0 -100px;
 }
 
 .cardTestimonial {
+    width: 470px;
     height: auto;
     padding: 20px;
-    margin: 40px 140px 0 -200px;
+    margin: 50px auto 0 -80px; /* Center the testimonial cards horizontally */
     border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px  rgba(0, 0, 0, 0.1);
 }
 
 .imgTestimonial {
-    width: 70%;
+    width: 90%; /* Adjust to fit the column width */
     height: auto;
     padding: 20px;
     border-radius: 30px;

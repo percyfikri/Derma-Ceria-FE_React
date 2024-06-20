@@ -15,7 +15,7 @@ const TransparansiDonatur = () => {
   return (
     <Container className={styles.mainContent}>
       <h1 className={styles.dashboardTitle}>Laporan Donasi</h1>
-      <Row className="gap-6 max-md:flex-col max-md:gap-0">
+      <Row className="gap-6 max-md:flex-col max-md:gap-0 justify-content-start">
         <Col xs={12} sm={6} md={4} className={styles.cardMarginBottom}>
           <CardTransparansiDonatur 
             imageSrc={Lapdonasi1}
@@ -89,7 +89,7 @@ const TransparansiDonatur = () => {
           <img src={Testimonial3} alt="Testimonial3" className={styles.imgTestimonial} />
         </Col>
         <Col>
-          <Card className={styles.cardTestimonial} style={{ height: "200px" }}>
+          <Card className={styles.cardTestimonial}>
             Terima kasih atas kursi roda yang telah diberikan. Dengan ini, hidup kami menjadi lebih mudah dan lebih bermakna. Terima kasih atas kebaikan dan dukungan Anda.
             <br /><br />
             <b>Pak Sutejo</b>

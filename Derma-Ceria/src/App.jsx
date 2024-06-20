@@ -48,10 +48,17 @@ import PayDonasiUang from "./pages/paymentDonasi/payDonasiUang";
 import PayDonasiBarang from "./pages/paymentDonasi/payDonasiBarang";
 
 // dashboard donatur
+<<<<<<< HEAD
 import DashboardDonatur from "./pages/donaturDashboard/dashboardDonatur/dashboardDonatur";
 import PelacakanDonatur from "./pages/donaturDashboard/pelacakanDonatur/pelacakanDonatur";
 import RiwayatDonatur from "./pages/donaturDashboard/riwayatDonatur/riwayatDonatur";
 import TransparansiDonatur from "./pages/donaturDashboard/transparansiDonatur/transparansiDonatur";
+=======
+// import DashboardDonatur from "./pages/donaturDashboard/dashboardDonatur/dashboardDonatur";
+// import PelacakanDonatur from "./pages/donaturDashboard/pelacakanDonatur/pelacakanDonatur";
+// import RiwayatDonatur from "./pages/donaturDashboard/riwayatDonatur/riwayatDonatur";
+// import TransparansiDonatur from "./pages/donaturDashboard/transparansiDonatur/transparansiDonatur";
+>>>>>>> 10bcc4f1b17e4baa9bd9278a2212c30c6508f813
 // dashboard donatur
 
 import DashboardBenefisari from "./pages/benefisariDashboard/dashboardBenefisari/dashboardBenefisari";
@@ -101,16 +108,17 @@ function App() {
         <Route path="/blogdetail" element={<BlogDetail />} />
         <Route path="/login" element={<LoginWithoutFooter />} />
         <Route path="/register" element={<Register />} />
+<<<<<<< HEAD
 
+=======
+>>>>>>> 10bcc4f1b17e4baa9bd9278a2212c30c6508f813
         <Route path="/pendidikan" element={<Pendidikan />} />
         <Route path="/bencana" element={<Bencana />} />
         <Route path="/kesehatan" element={<Kesehatan />} />
         <Route path="/sosial" element={<Sosial />} />
         <Route path="/teknologi" element={<Teknologi />} />
-
         <Route path="/zakat" element={<Zakat />} />
         <Route path="/qurban" element={<Qurban />} />
-
         <Route path="/berlangsung" element={<Berlangsung />} />
         <Route path="/diperpanjang" element={<Diperpanjang />} />
         <Route path="/selesai" element={<Selesai />} />
@@ -120,7 +128,6 @@ function App() {
         <Route path="/terbaru" element={<Terbaru />} />
         <Route path="/terlama" element={<Terlama />} />
         <Route path="/mendesak" element={<Mendesak />} />
-
         <Route path="/detailpendidikan" element={<DetailPendidikan />} />
         <Route path="/detailbencana" element={<DetailBencana />} />
         <Route path="/detailkesehatan" element={<DetailKesehatan />} />
@@ -129,10 +136,8 @@ function App() {
 
         <Route path="/detailzakat" element={<DetailZakat />} />
         <Route path="/detailqurban" element={<DetailQurban />} />
-
         <Route path="/paydonasiuang" element={<PayDonasiUang />} />
         <Route path="/paydonasibarang" element={<PayDonasiBarang />} />
-
         {/* dashboard donatur */}
         <Route path="/dashboardDonatur" element={<DashboardDonatur />} />
         <Route path="/pelacakanDonatur" element={<PelacakanDonatur />} />

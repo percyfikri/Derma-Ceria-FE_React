@@ -1,29 +1,66 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineGoogle } from "react-icons/ai";
 import Logo from "../../assets/logos/logoHorizontal.png";
 import "../../index.css";
 import "./register.css";
+import { auth, provider } from '../../pages/loginPage/firebase';
+import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+
 
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false); 
+  const navigate = useNavigate();
+  
+  // const auth = getAuth();
+  const provider = new GoogleAuthProvider();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user && loggedIn) { 
+        navigate("/donasi");
+      }
+    });
+    return unsubscribe;
+  }, [loggedIn, navigate]);
 
   const handleNameChange = (e) => setName(e.target.value);
   const handleEmailChange = (e) => setEmail(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+  const handleRoleChange = (e) => setRole(e.target.value);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Name:", name);
-    console.log("Email:", email);
-    console.log("Password:", password);
-    setName("");
-    setEmail("");
-    setPassword("");
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("User Info:", user);
+        setLoggedIn(true); 
+      })
+      .catch((error) => {
+        console.error("Error during sign up with email and password:", error);
+      });
   };
+
+  const handleGoogleRegister = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        const user = result.user;
+        console.log("User Info:", user);
+        setLoggedIn(true); 
+      })
+      .catch((error) => {
+        console.error("Error during sign in with Google:", error);
+      });
+  };
+  
 
   return (
     <Container fluid className="vh-100 d-flex align-items-center justify-content-center overlay-text">
@@ -37,7 +74,7 @@ const Register = () => {
           </div>
         </Col>
         <Col md={6} className="d-flex flex-column align-items-center justify-content-center">
-          <div className="register-form" style={{ maxWidth: "550px", width: "100%" }}>
+          <div className="register-form" style={{ maxWidth: "500px", width: "100%", height: "624px"}}>
             <div className="text-center mb-1">
               <div className="logo-container">
                 <Link to="/">
@@ -65,7 +102,7 @@ const Register = () => {
                 <Form.Control type="password" placeholder="Masukkan Kata Sandi" value={password} onChange={handlePasswordChange} className="form-control-custom" />
               </Form.Group>
               <Form.Group controlId="formRole" className="mb-3">
-                <Form.Select className="form-control-custom">
+                <Form.Select value={role} onChange={handleRoleChange} className="form-control-custom">
                   <option>Pilih Role</option>
                   <option value="1">Donatur</option>
                   <option value="2">Penggalang Dana</option>
@@ -75,9 +112,9 @@ const Register = () => {
                 Daftar
               </Button>
               <p className="text-center">Atau</p>
-              <Button variant="warning" type="button" className="w-100 mb-3">
+              <Button variant="warning" type="button" className="w-100 mb-3" onClick={handleGoogleRegister}>
                 <AiOutlineGoogle style={{ color: "black", marginRight: "8px" }} />
-                Masuk dengan Google
+                Daftar dengan Google
               </Button>
             </Form>
             <div className="text-center">

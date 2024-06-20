@@ -3,8 +3,12 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar/NavbarComponent";
 import Footer from "./components/Footer/FooterComponent";
+<<<<<<< HEAD
 import SidebarBenefisari from "./components/ComponentSidebar/SidebarBenefisari";
 import SidebarDonatur from "./components/ComponentSidebar/SidebarDonatur";
+=======
+import Sidebar from "./components/Sidebar/sidebar";
+>>>>>>> 1579a9ded3f623cbe179626fec5624f71f6848e5
 import LoginWithoutFooter from "./components/LoginWithoutFooter";
 
 import Register from "./pages/registerPage/register";  
@@ -71,6 +75,7 @@ function App() {
     "/pelacakanBenefisari",
   ];
 
+<<<<<<< HEAD
   const SidebarDonaturRoutes = [
     "/dashboardDonatur",
     "/pelacakanDonatur",
@@ -89,6 +94,17 @@ function App() {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/donasi" element={<Donasi />} />
+=======
+  const isSidebar = sidebarRoutes.some(route => location.pathname.startsWith(route));
+
+  return (
+    <>
+      {!isLoginPage && !isRegisterPage && !isSidebar && <Navbar />}
+      {isSidebar ? <Sidebar /> : (
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/donasi" element={<Donasi />} />
+>>>>>>> 1579a9ded3f623cbe179626fec5624f71f6848e5
 
         <Route path="/event" element={<Event />} />
         <Route path="/eventdetail" element={<EventDetail />} />
@@ -140,7 +156,12 @@ function App() {
         <Route path="/pelacakanBenefisari" element={<PelacakanBenefisari />} />
         <Route path="/transparansiBenefisari" element={<TransparansiBenefisari />} />
       </Routes>
+<<<<<<< HEAD
       {!isLoginPage && !isRegisterPage && !isSidebarBenefisari && !isSidebarDonatur && <Footer />}
+=======
+      )}
+      {!isLoginPage && !isRegisterPage && !isSidebar && <Footer />}
+>>>>>>> 1579a9ded3f623cbe179626fec5624f71f6848e5
     </>
   );
 }

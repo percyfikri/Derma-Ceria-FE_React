@@ -20,7 +20,7 @@ const TransparansiBenefisari = () => {
 
   const handleAddItem = (item) => {
     console.log("Add item:", item);
-    setShowModal(true); // Show modal when adding item
+    setShowModal(true);
   };
 
   const handleEditItem = (item) => {

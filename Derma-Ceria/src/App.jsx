@@ -3,15 +3,11 @@ import { Routes, Route, useLocation } from "react-router-dom";
 
 import Navbar from "./components/Navbar/NavbarComponent";
 import Footer from "./components/Footer/FooterComponent";
-<<<<<<< HEAD
 import SidebarBenefisari from "./components/ComponentSidebar/SidebarBenefisari";
 import SidebarDonatur from "./components/ComponentSidebar/SidebarDonatur";
-=======
-import Sidebar from "./components/Sidebar/sidebar";
->>>>>>> 1579a9ded3f623cbe179626fec5624f71f6848e5
 import LoginWithoutFooter from "./components/LoginWithoutFooter";
 
-import Register from "./pages/registerPage/register";  
+import Register from "./pages/registerPage/register";
 import Homepage from "./pages/homePage/homepage";
 import Donasi from "./pages/donasiPage/donasi";
 
@@ -51,12 +47,12 @@ import DetailQurban from "./pages/detailDonasi/detailQurban";
 import PayDonasiUang from "./pages/paymentDonasi/payDonasiUang";
 import PayDonasiBarang from "./pages/paymentDonasi/payDonasiBarang";
 
-//dashboard donatur
-// import DashboardDonatur from "./pages/donaturDashboard/dashboardDonatur/dashboardDonatur";
-// import PelacakanDonatur from "./pages/donaturDashboard/pelacakanDonatur/pelacakanDonatur";
-// import RiwayatDonatur from "./pages/donaturDashboard/riwayatDonatur/riwayatDonatur";
-// import TransparansiDonatur from "./pages/donaturDashboard/transparansiDonatur/transparansiDonatur";
-//dashboard donatur
+// dashboard donatur
+import DashboardDonatur from "./pages/donaturDashboard/dashboardDonatur/dashboardDonatur";
+import PelacakanDonatur from "./pages/donaturDashboard/pelacakanDonatur/pelacakanDonatur";
+import RiwayatDonatur from "./pages/donaturDashboard/riwayatDonatur/riwayatDonatur";
+import TransparansiDonatur from "./pages/donaturDashboard/transparansiDonatur/transparansiDonatur";
+// dashboard donatur
 
 import DashboardBenefisari from "./pages/benefisariDashboard/dashboardBenefisari/dashboardBenefisari";
 import ProgramKampanye from "./pages/benefisariDashboard/programKampanye/programKampanye";
@@ -67,53 +63,44 @@ function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
   const isRegisterPage = location.pathname === "/register";
-  
-  const SidebarBenefisariRoutes = [
+
+  const sidebarRoutes = [
     "/dashboardBenefisari",
     "/programKampanye",
     "/transparansiBenefisari",
     "/pelacakanBenefisari",
-  ];
-
-<<<<<<< HEAD
-  const SidebarDonaturRoutes = [
     "/dashboardDonatur",
     "/pelacakanDonatur",
     "/riwayatDonatur",
     "/transparansiDonatur",
   ];
 
-  const isSidebarBenefisari = SidebarBenefisariRoutes.includes(location.pathname);
-  const isSidebarDonatur = SidebarDonaturRoutes.includes(location.pathname);
-
-  return (
-    <>
-      {!isLoginPage && !isRegisterPage && !isSidebarBenefisari && !isSidebarDonatur && <Navbar />}
-      {isSidebarBenefisari && <SidebarBenefisari />}
-      {isSidebarDonatur && <SidebarDonatur />}
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/donasi" element={<Donasi />} />
-=======
   const isSidebar = sidebarRoutes.some(route => location.pathname.startsWith(route));
 
   return (
     <>
       {!isLoginPage && !isRegisterPage && !isSidebar && <Navbar />}
-      {isSidebar ? <Sidebar /> : (
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/donasi" element={<Donasi />} />
->>>>>>> 1579a9ded3f623cbe179626fec5624f71f6848e5
-
+      {isSidebar && (
+        <>
+          {location.pathname.startsWith("/dashboardBenefisari") ||
+          location.pathname.startsWith("/programKampanye") ||
+          location.pathname.startsWith("/transparansiBenefisari") ||
+          location.pathname.startsWith("/pelacakanBenefisari") ? (
+            <SidebarBenefisari />
+          ) : (
+            <SidebarDonatur />
+          )}
+        </>
+      )}
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/donasi" element={<Donasi />} />
         <Route path="/event" element={<Event />} />
         <Route path="/eventdetail" element={<EventDetail />} />
-
         <Route path="/blog" element={<Blog />} />
         <Route path="/blogdetail" element={<BlogDetail />} />
-
         <Route path="/login" element={<LoginWithoutFooter />} />
-        <Route path="/register" element={<Register />} /> 
+        <Route path="/register" element={<Register />} />
 
         <Route path="/pendidikan" element={<Pendidikan />} />
         <Route path="/bencana" element={<Bencana />} />
@@ -127,8 +114,8 @@ function App() {
         <Route path="/berlangsung" element={<Berlangsung />} />
         <Route path="/diperpanjang" element={<Diperpanjang />} />
         <Route path="/selesai" element={<Selesai />} />
-
         <Route path="/berakhir" element={<Berakhir />} />
+
         <Route path="/populer" element={<Populer />} />
         <Route path="/terbaru" element={<Terbaru />} />
         <Route path="/terlama" element={<Terlama />} />
@@ -139,6 +126,7 @@ function App() {
         <Route path="/detailkesehatan" element={<DetailKesehatan />} />
         <Route path="/detailsosial" element={<DetailSosial />} />
         <Route path="/detailteknologi" element={<DetailTeknologi />} />
+
         <Route path="/detailzakat" element={<DetailZakat />} />
         <Route path="/detailqurban" element={<DetailQurban />} />
 
@@ -146,22 +134,18 @@ function App() {
         <Route path="/paydonasibarang" element={<PayDonasiBarang />} />
 
         {/* dashboard donatur */}
-        {/* <Route path="/dashboardDonatur" element={<DashboardDonatur />} />
+        <Route path="/dashboardDonatur" element={<DashboardDonatur />} />
         <Route path="/pelacakanDonatur" element={<PelacakanDonatur />} />
         <Route path="/riwayatDonatur" element={<RiwayatDonatur />} />
-        <Route path="/transparansiDonatur" element={<TransparansiDonatur />} /> */}
+        <Route path="/transparansiDonatur" element={<TransparansiDonatur />} />
+        
         {/* dashboard Benefisari */}
         <Route path="/dashboardBenefisari" element={<DashboardBenefisari />} />
         <Route path="/programKampanye" element={<ProgramKampanye />} />
         <Route path="/pelacakanBenefisari" element={<PelacakanBenefisari />} />
         <Route path="/transparansiBenefisari" element={<TransparansiBenefisari />} />
       </Routes>
-<<<<<<< HEAD
-      {!isLoginPage && !isRegisterPage && !isSidebarBenefisari && !isSidebarDonatur && <Footer />}
-=======
-      )}
       {!isLoginPage && !isRegisterPage && !isSidebar && <Footer />}
->>>>>>> 1579a9ded3f623cbe179626fec5624f71f6848e5
     </>
   );
 }

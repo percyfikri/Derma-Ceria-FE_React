@@ -7,6 +7,12 @@ import SidebarBenefisari from "./components/ComponentSidebar/SidebarBenefisari";
 import SidebarDonatur from "./components/ComponentSidebar/SidebarDonatur";
 import LoginWithoutFooter from "./components/LoginWithoutFooter";
 
+import ProfileBenefisari from "./pages/benefisariDashboard/Profile/ProfileBenefisari";
+import ProfileDonatur from "./pages/donaturDashboard/Profile/ProfileDonatur";
+
+import ChangePasswordBenefisari from "./pages/benefisariDashboard/Profile/changePasswordBenefisari/changePasswordBenefisari";
+import ChangePasswordDonatur from "./pages/donaturDashboard/Profile/changePasswordDonatur/changePasswordDonatur";
+
 import Register from "./pages/registerPage/register";
 import Homepage from "./pages/homePage/homepage";
 import Donasi from "./pages/donasiPage/donasi";
@@ -58,24 +64,27 @@ import DashboardBenefisari from "./pages/benefisariDashboard/dashboardBenefisari
 import ProgramKampanye from "./pages/benefisariDashboard/programKampanye/programKampanye";
 import PelacakanBenefisari from "./pages/benefisariDashboard/pelacakanBenefisari/pelacakanBenefisari";
 import TransparansiBenefisari from "./pages/benefisariDashboard/transparansiBenefisari/transparansiBenefisari";
+import { ImPower } from "react-icons/im";
 
 function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login";
   const isRegisterPage = location.pathname === "/register";
 
-  const sidebarRoutes = [
+  const isSidebar = [
     "/dashboardBenefisari",
     "/programKampanye",
-    "/transparansiBenefisari",
     "/pelacakanBenefisari",
+    "/transparansiBenefisari",
+    "/ProfileBenefisari",
+    "/changePasswordBenefisari",
     "/dashboardDonatur",
     "/pelacakanDonatur",
     "/riwayatDonatur",
     "/transparansiDonatur",
-  ];
-
-  const isSidebar = sidebarRoutes.some(route => location.pathname.startsWith(route));
+    "/ProfileDonatur",
+    "/changePasswordDonatur"
+  ].some(path => location.pathname.startsWith(path));
 
   return (
     <>
@@ -85,7 +94,9 @@ function App() {
           {location.pathname.startsWith("/dashboardBenefisari") ||
           location.pathname.startsWith("/programKampanye") ||
           location.pathname.startsWith("/transparansiBenefisari") ||
-          location.pathname.startsWith("/pelacakanBenefisari") ? (
+          location.pathname.startsWith("/pelacakanBenefisari") ||
+          location.pathname.startsWith("/ProfileBenefisari") ||
+          location.pathname.startsWith("/changePasswordBenefisari") ? (
             <SidebarBenefisari />
           ) : (
             <SidebarDonatur />
@@ -130,11 +141,16 @@ function App() {
         <Route path="/pelacakanDonatur" element={<PelacakanDonatur />} />
         <Route path="/riwayatDonatur" element={<RiwayatDonatur />} />
         <Route path="/transparansiDonatur" element={<TransparansiDonatur />} />
+        <Route path="/ProfileBenefisari" element={<ProfileBenefisari />} />
+        <Route path="/changePasswordBenefisari" element={<ChangePasswordBenefisari />} />
+
         {/* dashboard Benefisari */}
         <Route path="/dashboardBenefisari" element={<DashboardBenefisari />} />
         <Route path="/programKampanye" element={<ProgramKampanye />} />
         <Route path="/pelacakanBenefisari" element={<PelacakanBenefisari />} />
         <Route path="/transparansiBenefisari" element={<TransparansiBenefisari />} />
+        <Route path="/ProfileDonatur" element={<ProfileDonatur />} />
+        <Route path="/changePasswordDonatur" element={<ChangePasswordDonatur />} />
       </Routes>
       {!isLoginPage && !isRegisterPage && !isSidebar && <Footer />}
     </>

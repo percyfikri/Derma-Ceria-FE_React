@@ -23,7 +23,9 @@ import EventDetail2 from "./pages/eventPage/eventdetail2";
 import EventDetail3 from "./pages/eventPage/eventdetail3";
 
 import Blog from "./pages/blogPage/blog";
-import BlogDetail from "./pages/blogPage/blogdetail";
+import BlogDetail1 from "./pages/blogPage/blogdetail1";
+import BlogDetail2 from "./pages/blogPage/blogdetail2";
+import BlogDetail3 from "./pages/blogPage/blogdetail3";
 
 import Pendidikan from "./pages/kategori/pendidikan";
 import Bencana from "./pages/kategori/bencana";
@@ -113,7 +115,9 @@ function App() {
         <Route path="/eventdetail2" element={<EventDetail2 />} />
         <Route path="/eventdetail3" element={<EventDetail3 />} />
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blogdetail" element={<BlogDetail />} />
+        <Route path="/blogdetail1" element={<BlogDetail1 />} />
+        <Route path="/blogdetail2" element={<BlogDetail2 />} />
+        <Route path="/blogdetail3" element={<BlogDetail3 />} />
         <Route path="/login" element={<LoginWithoutFooter />} />
         <Route path="/register" element={<Register />} />
         <Route path="/pendidikan" element={<Pendidikan />} />

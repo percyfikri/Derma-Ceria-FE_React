@@ -6,9 +6,9 @@ import styles from "./blog.module.css";
 import CardBlog from "../../components/CardBlog/CardBlog";
 import LandingPageComponent from "../../components/Landingpage/LandingPageComponent";
 
-import CardBlog3 from "../../assets/images/blog1.jpg";
-import CardBlog2 from "../../assets/images/blog2.jpg";
-import CardBlog1 from "../../assets/images/blog3.jpg";
+import CardBlog1 from "../../assets/images/DBlog1.jpg";
+import CardBlog2 from "../../assets/images/DBlog2.jpg";
+import CardBlog3 from "../../assets/images/DBlog3.jpg";
 
 const Blog = () => {
   return (
@@ -23,25 +23,25 @@ const Blog = () => {
             <Col>
               <CardBlog
                 imageSrc={CardBlog1}
-                label="DermaCeria | 08 Maret 2024"
-                text="Tidak hanya dengan berdonasi dalam berbentuk uang,tetapi bersama Dermaceria dapat berdonasi dengan berupa donasi barang secara sukarela dan DermaCeria sudah terbukti terpercaya"
-                LinkButton="/blogdetail"
+                label="Derma Ceria | 1 Juni 2024"
+                text="Donasi adalah tindakan pemberian sukarela yang bertujuan untuk membantu individu, atau lembaga yang membutuhkan.Tindakan ini merupakan wujud nyata kepedulian sosial dan empati terhadap sesama."
+                LinkButton="/blogdetail1"
               />
             </Col>
             <Col>
               <CardBlog
                 imageSrc={CardBlog2}
-                label="DermaCeria | 08 Maret 2024"
-                text="Tips agar dapat berdonasi secara rutin maka luangkan waktumu dengan mempedulikan masyarakat yang membutuhkan dan kiranya tanamkan bahwa pentingnya berdonatur secara rutin."
-                LinkButton="/blogdetail"
+                label="Derma Ceria | 2 April 2024"
+                text="Tidak hanya dengan berbentuk uang,tetapi bersama Dermaceria dapat berdonasi dengan berupa donasi barang secara sukarela dan DermaCeria sudah terbukti terpercaya, sumbanganmu berarti untuk kami!"
+                LinkButton="/blogdetail2"
               />
             </Col>
             <Col>
               <CardBlog
                 imageSrc={CardBlog3}
-                label="DermaCeria | 08 Maret 2024"
-                text="Bersama dengan DermaCeria membantu adik yang kurang mampu dalam perekonomian dengan tubuh yang sedang sakit dan membutuhkan uluran tangan sedikit donasi anda berarti untuk membantu pengobatan"
-                LinkButton="/blogdetail"
+                label="Derma Ceria | 9 Mei 2024"
+                text="Tips agar dapat berdonasi secara rutin maka luangkan waktumu dengan mempedulikan masyarakat yang membutuhkan dan kiranya tanamkan bahwa pentingnya berdonatur secara rutin."
+                LinkButton="/blogdetail3"
               />
             </Col>
           </Row>

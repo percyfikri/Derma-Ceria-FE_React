@@ -1,87 +1,49 @@
-.container {
-  font-family: Helvetica, sans-serif;
-  margin-top: 15px;
-  flex-direction: column;
-}
-
-.title{
-  font-size: 25px;
-  margin-bottom: 30px;
-  font-weight: bold;
-}
-
-.form {
+.containerprofile {
   display: flex;
-  flex-direction: column;
-  background-color: #f7f3e8;
-  font-family: Helvetica, sans-serif;
-  padding: 30px;
-  border-radius: 10px;
-  max-width: 600px;
-  margin: auto;
-  height: 50%;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.17);
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 50px;
 }
 
-.formGroup {
-  display: flex;
-  flex-direction: column;
+.photoProfile {
+  flex: 1;
+  text-align: center;
+  margin-left: 15%; /* Geser photo profile ke kanan */
+}
+
+.profileImage {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan pada placeholder gambar */
+  cursor: pointer; /* Ubah cursor saat gambar diklik */
+}
+
+.mainContent {
+  flex: 1;
+  background-color: #f8f9fa; /* Warna latar belakang untuk kontras */
+  padding: 20px; /* Tambahkan padding */
+  border-radius: 10px; /* Tambahkan border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+  margin-left: 37%; /* Geser main content ke kanan */
+  position: relative;
+  top: -190px; /* Geser main content lebih ke atas */
+  width: 100%; /* Sesuaikan lebar main content */
+}
+
+.inputShadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 15px;
 }
 
-.label {
-  margin-bottom: 5px;
-  font-size: 16px;
+.passwordGroup {
+  position: relative;
 }
 
-.input {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.passwordContainer {
-  display: flex;
-  align-items: center;
-}
-
-.editButton {
-  background-color: #f8b22d;  
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+.passwordToggleIcon {
+  position: absolute;
+  top: 70%;
+  right: 10px;
+  transform: translateY(-50%);
   cursor: pointer;
-  align-self: flex-end;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: 10px;
-}
-
-.editButton:hover {
-  background-color:white;
-  color:#f8b22d;
-}
-
-.submitButton {
-  background-color: #f8b22d;  
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  align-self: flex-end;
-  margin-top: 15px;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.submitButton:hover {
-  background-color:white;
-  color:#f8b22d;
 }

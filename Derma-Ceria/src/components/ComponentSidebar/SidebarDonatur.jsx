@@ -40,7 +40,7 @@ const SidebarDonatur = () => {
             </Nav.Link>
           </Nav.Item>
           <Nav.Item className={styles.navItem}>
-            <Nav.Link href="/donasi" className={`${styles.navLink} text-white`} activeClassName={styles.activeNavLink}>
+            <Nav.Link href="/" className={`${styles.navLink} text-white`} activeClassName={styles.activeNavLink}>
               <BoxArrowRight className="me-2" /> Keluar
             </Nav.Link>
           </Nav.Item>

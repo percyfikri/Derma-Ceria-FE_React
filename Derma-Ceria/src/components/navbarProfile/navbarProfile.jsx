@@ -56,7 +56,7 @@ const NavbarProfile = ({ setIsLoggedIn }) => {
                 Dashboard
               </Dropdown.Item>
               <Dropdown.Item href="/" className={styles.dropdownItem}>
-                Logout
+                Keluar
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

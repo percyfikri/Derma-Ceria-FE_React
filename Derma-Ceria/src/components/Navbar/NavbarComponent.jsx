@@ -19,7 +19,12 @@ const NavbarComponent = () => {
             {/* Logo & Search */}
             <div className="row align-items-center w-100">
               <div className="col d-flex align-items-center">
-                <Dropdown>
+            <Navbar.Brand>
+              <Nav.Link href="/">
+                <img src={Logo} alt="logo" style={{ width: "150px" }} />
+              </Nav.Link>
+            </Navbar.Brand>
+                {/* <Dropdown>
                   <Dropdown.Toggle as="a" className={styles.navbarBrand}>
                     <img src={Logo} alt="logo" style={{ width: "150px" }} />
                   </Dropdown.Toggle>
@@ -38,7 +43,7 @@ const NavbarComponent = () => {
                       Dashboard
                     </Dropdown.Item>
                   </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown> */}
               </div>
               <div className="col">
                 <input

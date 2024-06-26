@@ -116,15 +116,15 @@ function App() {
     "/terbaru",
     "/terlama",
     "/mendesak",
-    "/detailpendidikan",
-    "/detailbencana",
-    "/detailkesehatan",
-    "/detailsosial",
-    "/detailteknologi",
-    "/detailzakat",
-    "/detailqurban",
-    "/paydonasiuang",
-    "/paydonasibarang"
+    "/detailPendidikan",
+    "/detailBencana",
+    "/detailKesehatan",
+    "/detailSosial",
+    "/detailTeknologi",
+    "/detailZakat",
+    "/detailQurban",
+    "/payDonasiUang",
+    "/payDonasiBarang"
   ].some(path => location.pathname.startsWith(path));
 
   return (

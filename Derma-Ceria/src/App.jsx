@@ -11,9 +11,6 @@ import LoginWithoutFooter from "./components/LoginWithoutFooter";
 import ProfileBenefisari from "./pages/benefisariDashboard/Profile/ProfileBenefisari";
 import ProfileDonatur from "./pages/donaturDashboard/Profile/ProfileDonatur";
 
-import ChangePasswordBenefisari from "./pages/benefisariDashboard/Profile/changePasswordBenefisari/changePasswordBenefisari";
-import ChangePasswordDonatur from "./pages/donaturDashboard/Profile/changePasswordDonatur/changePasswordDonatur";
-
 import Register from "./pages/registerPage/register";
 import Homepage from "./pages/homePage/homepage";
 import Donasi from "./pages/donasiPage/donasi";
@@ -192,9 +189,7 @@ function App() {
         <Route path="/pelacakanBenefisari" element={<PelacakanBenefisari />} />
         <Route path="/transparansiBenefisari" element={<TransparansiBenefisari />} />
         <Route path="/ProfileBenefisari" element={<ProfileBenefisari />} />
-        <Route path="/changePasswordBenefisari" element={<ChangePasswordBenefisari />} />
         <Route path="/ProfileDonatur" element={<ProfileDonatur />} />
-        <Route path="/changePasswordDonatur" element={<ChangePasswordDonatur />} />
       </Routes>
       {!isLoginPage && !isRegisterPage && !isSidebar && <Footer />}
     </>

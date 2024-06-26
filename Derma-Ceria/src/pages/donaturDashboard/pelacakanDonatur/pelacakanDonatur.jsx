@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./pelacakanDonatur.module.css";
 
 const PelacakanDonatur = () => {
-  const [status, setStatus] = useState("Proses");
+  const [status, setStatus] = useState("Tiba");
 
   const trackingHistory = [
     { date: "05 Mei 2024", time: "16.00", description: "Donasi telah sampai diterima oleh yang bersangkutan", status: "Tiba" },
@@ -40,7 +40,7 @@ const PelacakanDonatur = () => {
       <div className={styles.timeline}>
         {["Proses", "Dikemas", "Dikirim", "Dalam Perjalanan", "Tiba"].map((step, index) => (
           <div key={step} className={styles.timelineStep}>
-            <div className={styles.circle} style={{ backgroundColor: status === step ? "#f8b22d" : "#ccc" }}></div>
+            <div className={styles.circle} style={{ backgroundColor: status === step ? "#f8b22d" : "#000000" }}></div>
             <p style={{ color: status === step ? "#f8b22d" : "black" }}>{step}</p>
             {index < 4 && <div className={styles.timelineLine}></div>}
           </div>

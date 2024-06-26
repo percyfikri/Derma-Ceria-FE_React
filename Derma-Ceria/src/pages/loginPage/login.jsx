@@ -89,7 +89,8 @@ const LoginWithoutFooter = () => {
                 </Form.Select>
               </Form.Group>
               <br />
-              <Button variant="warning" type="submit" className="w-100 mb-3">
+              <Button variant="warning" type="submit" className="w-100 mb-3"
+                onClick={() => navigate('/donasi')}>
                 Masuk
               </Button>
               <p className="text-center">Atau</p>

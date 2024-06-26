@@ -108,7 +108,8 @@ const Register = () => {
                   <option value="2">Penggalang Dana</option>
                 </Form.Select>
               </Form.Group>
-              <Button variant="warning" type="submit" className="w-100 mb-3">
+              <Button variant="warning" type="submit" className="w-100 mb-3"
+                onClick={() => navigate('/donasi')}>
                 Daftar
               </Button>
               <p className="text-center">Atau</p>

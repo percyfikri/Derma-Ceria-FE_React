@@ -25,7 +25,7 @@ const Event = () => {
                 imageSrc={CardEvent1}
                 label="Dimulai sejak 18 April 2024"
                 title="Charity Children Camp SARENITY"
-                LinkButton="/eventdetail"
+                LinkButton="/eventdetail1"
               />
             </Col>
             <Col>
@@ -33,7 +33,7 @@ const Event = () => {
                 imageSrc={CardEvent2}
                 label="Dimulai sejak 18 April 2024"
                 title="Charity Together With Diesnatalis Fasilkom"
-                LinkButton="/eventdetail"
+                LinkButton="/eventdetail2"
               />
             </Col>
             <Col>
@@ -41,7 +41,7 @@ const Event = () => {
                 imageSrc={CardEvent3}
                 label="Dimulai sejak 18 April 2024"
                 title="Sport Event: Uniting Communities!"
-                LinkButton="/eventdetail"
+                LinkButton="/eventdetail3"
               />
             </Col>
           </Row>

@@ -18,7 +18,9 @@ import Homepage from "./pages/homePage/homepage";
 import Donasi from "./pages/donasiPage/donasi";
 
 import Event from "./pages/eventPage/event";
-import EventDetail from "./pages/eventPage/eventdetail";
+import EventDetail1 from "./pages/eventPage/eventdetail1";
+import EventDetail2 from "./pages/eventPage/eventdetail2";
+import EventDetail3 from "./pages/eventPage/eventdetail3";
 
 import Blog from "./pages/blogPage/blog";
 import BlogDetail from "./pages/blogPage/blogdetail";
@@ -107,7 +109,9 @@ function App() {
         <Route path="/" element={<Homepage />} />
         <Route path="/donasi" element={<Donasi />} />
         <Route path="/event" element={<Event />} />
-        <Route path="/eventdetail" element={<EventDetail />} />
+        <Route path="/eventdetail1" element={<EventDetail1 />} />
+        <Route path="/eventdetail2" element={<EventDetail2 />} />
+        <Route path="/eventdetail3" element={<EventDetail3 />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blogdetail" element={<BlogDetail />} />
         <Route path="/login" element={<LoginWithoutFooter />} />

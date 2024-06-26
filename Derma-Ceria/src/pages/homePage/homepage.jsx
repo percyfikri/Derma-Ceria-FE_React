@@ -18,6 +18,14 @@ import Cardrec4 from "../../assets/images/homepage4.jpeg";
 import Cardrec5 from "../../assets/images/homepage5.jpeg";
 import Cardrec6 from "../../assets/images/homepage6.jpeg";
 
+import CardImgpopuler1 from "../../assets/images/populer1.png";
+import CardImgpopuler2 from "../../assets/images/populer2.png";
+import CardImgpopuler3 from "../../assets/images/populer3.jpg";
+import CardImgpopuler4 from "../../assets/images/populer4.jpg";
+import CardImgpopuler5 from "../../assets/images/populer5.png";
+import CardImgpopuler6 from "../../assets/images/populer6.png";
+
+
 import Banner from "../../components/Banner/Banner.jsx";
 import DonationCard from "../../components/CardRecomendation/DonationCard";
 
@@ -94,26 +102,26 @@ const homepage = () => {
           <Carousel.Item>
             <Row className="justify-content-center">
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec1} label={"Sosial"} title="Bantuan untuk anak Indonesia!" target="9.900.000" progress={30} amount="33.000.000" LinkButton={"/sosial"} />
+                <DonationCard imageSrc={Cardrec1} label={"Sosial"} title="Bantuan untuk anak Indonesia!" target="9.900.000" progress={30} amount="33.000.000" LinkButton={"/detailSosial"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec2} label={"Bencana"} title="Donasi Korban Banjir" target="37.500.000" progress={75} amount="50.000.000" LinkButton={"/bencana"} />
+                <DonationCard imageSrc={Cardrec2} label={"Bencana"} title="Donasi Korban Banjir" target="37.500.000" progress={75} amount="50.000.000" LinkButton={"/detailBencana"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec3} label={"Bencana"} title="Donasi Korban Gempa Bumi" target="90.000.000" progress={90} amount="100.000.000" LinkButton={"/bencana"} />
+                <DonationCard imageSrc={Cardrec3} label={"Bencana"} title="Donasi Korban Gempa Bumi" target="90.000.000" progress={90} amount="100.000.000" LinkButton={"/detailBencana"} />
               </Col>
             </Row>
           </Carousel.Item>
           <Carousel.Item>
             <Row className="justify-content-center">
               <Col xs={12} md={4}>
-                <DonationCard label={"Bencana"} imageSrc={Cardrec4} title="Donasi Korban Erupsi" target="52.000.000" progress={65} amount="80.000.000" linkButton={"/"} />
+                <DonationCard label={"Bencana"} imageSrc={Cardrec4} title="Donasi Korban Erupsi" target="52.000.000" progress={65} amount="80.000.000" linkButton={"/detailBencana"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard label={"Sosial"} imageSrc={Cardrec5} title="Donasi Untuk Palestina" target="90.000.000" progress={75} amount="120.000.000" linkButton={"/"} />
+                <DonationCard label={"Sosial"} imageSrc={Cardrec5} title="Donasi Untuk Palestina" target="90.000.000" progress={75} amount="120.000.000" linkButton={"/detailSosial"} />
               </Col>
               <Col xs={12} md={4}>
-                <DonationCard label={"Sosial"} imageSrc={Cardrec6} title="Donasi Pembebasan Lahan" target="40.000.000" progress={40} amount="100.000.000" linkButton={"/"} />
+                <DonationCard label={"Sosial"} imageSrc={Cardrec6} title="Donasi Pembebasan Lahan" target="40.000.000" progress={40} amount="100.000.000" linkButton={"/detailSosial"} />
               </Col>
             </Row>
           </Carousel.Item>
@@ -153,28 +161,28 @@ const homepage = () => {
         <Carousel className={styles.carousell} interval={3000} indicators={false}>
           <Carousel.Item>
             <Row className="justify-content-center">
-              <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec1} label={"Sosial"} title="Bantuan untuk anak Indonesia!" target="9.900.000" progress={30} amount="33.000.000" LinkButton={"/sosial"} />
-              </Col>
-              <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec2} label={"Bencana"} title="Donasi Korban Banjir" target="37.500.000" progress={75} amount="50.000.000" LinkButton={"/bencana"} />
-              </Col>
-              <Col xs={12} md={4}>
-                <DonationCard imageSrc={Cardrec3} label={"Bencana"} title="Donasi Korban Gempa Bumi" target="90.000.000" progress={90} amount="100.000.000" LinkButton={"/bencana"} />
-              </Col>
+            <Col xs={12} md={4} style={{ marginBottom: "1rem" }}>
+                  <DonationCard imageSrc={CardImgpopuler1} label="Bencana" title="Asap Tebal Kebakaran Hutan Kalbar!" target="500.000.000" progress={49} amount="249.546.876" LinkButton="/detailBencana" />
+                </Col>
+                <Col xs={12} md={4} style={{ marginBottom: "1rem" }}>
+                  <DonationCard imageSrc={CardImgpopuler2} label="Pendidikan" title="Berbagi Paket Pendidikan Untuk Masa Depan" target="50.000.000" progress={0} amount="41.232.112" LinkButton="/detailPendidikan" />
+                </Col>
+                <Col xs={12} md={4} style={{ marginBottom: "1rem" }}>
+                  <DonationCard imageSrc={CardImgpopuler3} label="Sosial" title="Gantikan 10.000 Mushaf Milik Santri yang Usang" target="5.500.000" progress={0} amount="3.040.000" LinkButton="/detailSosial" />
+                </Col>
             </Row>
           </Carousel.Item>
           <Carousel.Item>
             <Row className="justify-content-center">
-              <Col xs={12} md={4}>
-                <DonationCard label={"Bencana"} imageSrc={Cardrec4} title="Donasi Korban Erupsi" target="52.000.000" progress={65} amount="80.000.000" linkButton={"/"} />
-              </Col>
-              <Col xs={12} md={4}>
-                <DonationCard label={"Sosial"} imageSrc={Cardrec5} title="Donasi Untuk Palestina" target="90.000.000" progress={75} amount="120.000.000" linkButton={"/"} />
-              </Col>
-              <Col xs={12} md={4}>
-                <DonationCard label={"Sosial"} imageSrc={Cardrec6} title="Donasi Pembebasan Lahan" target="40.000.000" progress={40} amount="100.000.000" linkButton={"/"} />
-              </Col>
+            <Col xs={12}  md={4} style={{ marginBottom: "1rem" }}>
+                  <DonationCard imageSrc={CardImgpopuler4} label="Kesehatan" title="Bantu Anak dengan Kondisi Kronis Untuk Berobat" target="116.650.000" progress={0} amount="40.282.072" LinkButton="/detailKesehatan" />
+                </Col>
+                <Col xs={12}  md={4} style={{ marginBottom: "1rem" }}>
+                  <DonationCard imageSrc={CardImgpopuler5} label="Sosial" title="Bantu Guru Pelosok Daerah dengan Sedekah Subuh" target="100.000.000" progress={0} amount="66.611.863" LinkButton="/detailSosial" />
+                </Col>
+                <Col xs={12} md={4} style={{ marginBottom: "1rem" }}>
+                  <DonationCard imageSrc={CardImgpopuler6} label="Pendidikan" title="Donasi Pendidikan Anak Yatim & Dhu’afa" target="50.000.000" progress={10} amount="5.000.000" LinkButton="/detailPendidikan" />
+                </Col>
             </Row>
           </Carousel.Item>
         </Carousel>

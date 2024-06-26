@@ -4,7 +4,7 @@ import styles from "../CardRecomendation/DonationCard.module.css";
 import ProfileComponent from "../ProfileComponent";
 import { Link } from "react-router-dom";
 
-const DonationCard = ({ imageSrc, label, title, target, progress, amount, linkButton }) => {
+const DonationCard = ({ imageSrc, label, title, target, progress, amount, LinkButton }) => {
   return (
     <div>
       <Card className={styles.cardRec}>
@@ -29,7 +29,7 @@ const DonationCard = ({ imageSrc, label, title, target, progress, amount, linkBu
           <div className={styles.profileAndButton}>
             <ProfileComponent />
             <div className={styles.btnDonasi}>
-              <Link to={linkButton} className={`btn btn-warning ${styles.btnDonasi}`}>
+            <Link to={LinkButton} className={`btn btn-warning ${styles.btnDonasi}`}>
                 Donasi
               </Link>
             </div>

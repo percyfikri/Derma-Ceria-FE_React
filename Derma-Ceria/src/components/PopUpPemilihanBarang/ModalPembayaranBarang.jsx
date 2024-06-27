@@ -6,15 +6,20 @@ import styles from './PopUpPemilihanBarang.module.css';
 import SuccessModalBarang from '../../components/PopUpPemilihanBarang/SuccessModalBarang';
 import BuktiPembayaranBarang from '../../components/ModalBuktiPembayaran/BuktiPembayaranBarang';
 
+import gopay from '../../assets/logos/GoPay.png';
+import dana from '../../assets/logos/Dana.png';
+import briva from '../../assets/logos/BRIVA.png';
+import mandiri from '../../assets/logos/Mandiri.png';
+
 const ModalPembayaranBarang = ({ showModal, handleClose, donationAmount = 2500, serviceFee = 0, onSuccess, selectedProduct, description, quantity }) => {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState("");
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const buktiMethods = [
-    { id: 1, name: 'GoPay', image: 'src/assets/logos/GoPay.png', title: 'E-Wallet' },
-    { id: 2, name: 'Dana', image: '/src/assets/logos/Dana.png', title: 'E-Wallet' },
-    { id: 3, name: 'BRIVA', image: '/src/assets/logos/BRIVA.png', title: 'Virtual Account' },
-    { id: 4, name: 'Mandiri', image: '/src/assets/logos/Mandiri.png', title: 'Virtual Account' }
+    { id: 1, name: 'GoPay', image: gopay, title: 'E-Wallet' },
+    { id: 2, name: 'Dana', image: dana, title: 'E-Wallet' },
+    { id: 3, name: 'BRIVA', image: briva, title: 'Virtual Account' },
+    { id: 4, name: 'Mandiri', image: mandiri, title: 'Virtual Account' }
   ];
 
   const groupedBuktiMethods = buktiMethods.reduce((acc, method) => {
